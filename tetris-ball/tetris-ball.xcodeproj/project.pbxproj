@@ -15,6 +15,7 @@
 		1C1D1DD01CEF9AF4007F63CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1D1DCE1CEF9AF4007F63CF /* Main.storyboard */; };
 		1C1D1DD21CEF9AF4007F63CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C1D1DD11CEF9AF4007F63CF /* Assets.xcassets */; };
 		1C1D1DD51CEF9AF4007F63CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1D1DD31CEF9AF4007F63CF /* LaunchScreen.storyboard */; };
+		1C1D1DDF1CEFA23F007F63CF /* BaseSpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1DDE1CEFA23F007F63CF /* BaseSpriteObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		1C1D1DD11CEF9AF4007F63CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C1D1DD41CEF9AF4007F63CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C1D1DD61CEF9AF4007F63CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C1D1DDD1CEFA23F007F63CF /* BaseSpriteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseSpriteObject.h; path = Base/BaseSpriteObject.h; sourceTree = "<group>"; };
+		1C1D1DDE1CEFA23F007F63CF /* BaseSpriteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseSpriteObject.m; path = Base/BaseSpriteObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 		1C1D1DDC1CEFA127007F63CF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				1C1D1DDD1CEFA23F007F63CF /* BaseSpriteObject.h */,
+				1C1D1DDE1CEFA23F007F63CF /* BaseSpriteObject.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C1D1DCD1CEF9AF4007F63CF /* GameViewController.m in Sources */,
+				1C1D1DDF1CEFA23F007F63CF /* BaseSpriteObject.m in Sources */,
 				1C1D1DC51CEF9AF4007F63CF /* AppDelegate.m in Sources */,
 				1C1D1DC81CEF9AF4007F63CF /* GameScene.m in Sources */,
 				1C1D1DC21CEF9AF4007F63CF /* main.m in Sources */,
