@@ -16,6 +16,8 @@
 		1C1D1DD21CEF9AF4007F63CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C1D1DD11CEF9AF4007F63CF /* Assets.xcassets */; };
 		1C1D1DD51CEF9AF4007F63CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1D1DD31CEF9AF4007F63CF /* LaunchScreen.storyboard */; };
 		1C1D1DDF1CEFA23F007F63CF /* BaseSpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1DDE1CEFA23F007F63CF /* BaseSpriteObject.m */; };
+		1C1D1DE21CEFA738007F63CF /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1DE11CEFA738007F63CF /* Ball.m */; };
+		1C1D1DE51CEFA9B2007F63CF /* BaseCollidableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1DE41CEFA9B2007F63CF /* BaseCollidableObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,10 @@
 		1C1D1DD61CEF9AF4007F63CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C1D1DDD1CEFA23F007F63CF /* BaseSpriteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseSpriteObject.h; path = Base/BaseSpriteObject.h; sourceTree = "<group>"; };
 		1C1D1DDE1CEFA23F007F63CF /* BaseSpriteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseSpriteObject.m; path = Base/BaseSpriteObject.m; sourceTree = "<group>"; };
+		1C1D1DE01CEFA738007F63CF /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = Base/Ball.h; sourceTree = "<group>"; };
+		1C1D1DE11CEFA738007F63CF /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ball.m; path = Base/Ball.m; sourceTree = "<group>"; };
+		1C1D1DE31CEFA9B2007F63CF /* BaseCollidableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseCollidableObject.h; path = Base/BaseCollidableObject.h; sourceTree = "<group>"; };
+		1C1D1DE41CEFA9B2007F63CF /* BaseCollidableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseCollidableObject.m; path = Base/BaseCollidableObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,10 @@
 			children = (
 				1C1D1DDD1CEFA23F007F63CF /* BaseSpriteObject.h */,
 				1C1D1DDE1CEFA23F007F63CF /* BaseSpriteObject.m */,
+				1C1D1DE31CEFA9B2007F63CF /* BaseCollidableObject.h */,
+				1C1D1DE41CEFA9B2007F63CF /* BaseCollidableObject.m */,
+				1C1D1DE01CEFA738007F63CF /* Ball.h */,
+				1C1D1DE11CEFA738007F63CF /* Ball.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -171,8 +181,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C1D1DE51CEFA9B2007F63CF /* BaseCollidableObject.m in Sources */,
 				1C1D1DCD1CEF9AF4007F63CF /* GameViewController.m in Sources */,
 				1C1D1DDF1CEFA23F007F63CF /* BaseSpriteObject.m in Sources */,
+				1C1D1DE21CEFA738007F63CF /* Ball.m in Sources */,
 				1C1D1DC51CEF9AF4007F63CF /* AppDelegate.m in Sources */,
 				1C1D1DC81CEF9AF4007F63CF /* GameScene.m in Sources */,
 				1C1D1DC21CEF9AF4007F63CF /* main.m in Sources */,

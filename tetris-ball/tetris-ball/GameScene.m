@@ -7,7 +7,7 @@
 //
 
 #import "GameScene.h"
-#import "BaseSpriteObject.h"
+#import "Ball.h"
 
 @implementation GameScene
 
@@ -29,10 +29,11 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        BaseSpriteObject *sprite = [[BaseSpriteObject alloc] initWithImageNamed:@"Spaceship" position:location andParentScene:self];
+        Ball *sprite = [Ball ballDefaultWithParent:self];
+        sprite.position = location;
         
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
+        sprite.xScale = 0.1;
+        sprite.yScale = 0.1;
         
         SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
         [sprite runAction:[SKAction repeatActionForever:action]];
