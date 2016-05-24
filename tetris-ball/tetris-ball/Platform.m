@@ -33,7 +33,16 @@
             {
                 SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Block"];
                 
-                node.position = CGPointMake(node.frame.size.width * j - j * 50, node.frame.size.height * i + i * 50);
+                CGFloat xPosition = 50;
+                CGFloat yPosition = 50;
+                
+                xPosition = i == 0 ? - node.frame.size.width - i * 50 : xPosition;
+                xPosition = i == 2 ? node.frame.size.width + i * 50 : xPosition;
+                
+                yPosition = j == 0 ? - node.frame.size.width - j * 50 : yPosition;
+                yPosition = j == 2 ? node.frame.size.width + j * 50 : yPosition;
+                
+                node.position = CGPointMake(xPosition, yPosition);
                 [self addChild:node];
             }
         }
@@ -42,6 +51,7 @@
 
 - (void) initialize
 {
+    self.physicsBody.categoryBitMask = PLATFORM_MASK;
     [self setNewColor:[SKColor redColor]];
 }
 

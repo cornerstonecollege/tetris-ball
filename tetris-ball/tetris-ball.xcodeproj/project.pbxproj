@@ -19,6 +19,10 @@
 		1C1D1DE21CEFA738007F63CF /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1DE11CEFA738007F63CF /* Ball.m */; };
 		1C1D1DE51CEFA9B2007F63CF /* BaseCollidableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1DE41CEFA9B2007F63CF /* BaseCollidableObject.m */; };
 		1C3CB1721CF4C10D0065DB93 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CB1711CF4C10D0065DB93 /* Platform.m */; };
+		1C3CB1751CF4E6030065DB93 /* BaseShapeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CB1741CF4E6030065DB93 /* BaseShapeObject.m */; };
+		1C3CB1781CF4E65D0065DB93 /* ShapeBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CB1771CF4E65D0065DB93 /* ShapeBackground.m */; };
+		80F263221CF4C7DA00AECF8B /* LandingPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F263211CF4C7DA00AECF8B /* LandingPageView.m */; };
+		80F263251CF4CB3E00AECF8B /* ARCADE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 80F263241CF4CB3E00AECF8B /* ARCADE.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,13 @@
 		1C1D1DE41CEFA9B2007F63CF /* BaseCollidableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseCollidableObject.m; path = Base/BaseCollidableObject.m; sourceTree = "<group>"; };
 		1C3CB1701CF4C10D0065DB93 /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		1C3CB1711CF4C10D0065DB93 /* Platform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Platform.m; sourceTree = "<group>"; };
+		1C3CB1731CF4E6030065DB93 /* BaseShapeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseShapeObject.h; path = Base/BaseShapeObject.h; sourceTree = "<group>"; };
+		1C3CB1741CF4E6030065DB93 /* BaseShapeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseShapeObject.m; path = Base/BaseShapeObject.m; sourceTree = "<group>"; };
+		1C3CB1761CF4E65D0065DB93 /* ShapeBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShapeBackground.h; path = Base/ShapeBackground.h; sourceTree = "<group>"; };
+		1C3CB1771CF4E65D0065DB93 /* ShapeBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShapeBackground.m; path = Base/ShapeBackground.m; sourceTree = "<group>"; };
+		80F263201CF4C7DA00AECF8B /* LandingPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LandingPageView.h; path = View/LandingPageView.h; sourceTree = "<group>"; };
+		80F263211CF4C7DA00AECF8B /* LandingPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LandingPageView.m; path = View/LandingPageView.m; sourceTree = "<group>"; };
+		80F263241CF4CB3E00AECF8B /* ARCADE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ARCADE.TTF; path = Fonts/ARCADE.TTF; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +86,8 @@
 		1C1D1DBF1CEF9AF4007F63CF /* tetris-ball */ = {
 			isa = PBXGroup;
 			children = (
+				80F263231CF4CB2200AECF8B /* Fonts */,
+				80F2631F1CF4C7A800AECF8B /* View */,
 				1C1D1DDC1CEFA127007F63CF /* Base */,
 				1C1D1DC31CEF9AF4007F63CF /* AppDelegate.h */,
 				1C1D1DC41CEF9AF4007F63CF /* AppDelegate.m */,
@@ -103,6 +116,10 @@
 		1C1D1DDC1CEFA127007F63CF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				1C3CB1731CF4E6030065DB93 /* BaseShapeObject.h */,
+				1C3CB1741CF4E6030065DB93 /* BaseShapeObject.m */,
+				1C3CB1761CF4E65D0065DB93 /* ShapeBackground.h */,
+				1C3CB1771CF4E65D0065DB93 /* ShapeBackground.m */,
 				1C1D1DDD1CEFA23F007F63CF /* BaseSpriteObject.h */,
 				1C1D1DDE1CEFA23F007F63CF /* BaseSpriteObject.m */,
 				1C1D1DE31CEFA9B2007F63CF /* BaseCollidableObject.h */,
@@ -113,6 +130,23 @@
 				1C3CB1711CF4C10D0065DB93 /* Platform.m */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		80F2631F1CF4C7A800AECF8B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				80F263201CF4C7DA00AECF8B /* LandingPageView.h */,
+				80F263211CF4C7DA00AECF8B /* LandingPageView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		80F263231CF4CB2200AECF8B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				80F263241CF4CB3E00AECF8B /* ARCADE.TTF */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C1D1DCA1CEF9AF4007F63CF /* GameScene.sks in Resources */,
+				80F263251CF4CB3E00AECF8B /* ARCADE.TTF in Resources */,
 				1C1D1DD51CEF9AF4007F63CF /* LaunchScreen.storyboard in Resources */,
 				1C1D1DD21CEF9AF4007F63CF /* Assets.xcassets in Resources */,
 				1C1D1DD01CEF9AF4007F63CF /* Main.storyboard in Resources */,
@@ -187,6 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C1D1DE51CEFA9B2007F63CF /* BaseCollidableObject.m in Sources */,
+				1C3CB1751CF4E6030065DB93 /* BaseShapeObject.m in Sources */,
+				80F263221CF4C7DA00AECF8B /* LandingPageView.m in Sources */,
+				1C3CB1781CF4E65D0065DB93 /* ShapeBackground.m in Sources */,
 				1C1D1DCD1CEF9AF4007F63CF /* GameViewController.m in Sources */,
 				1C3CB1721CF4C10D0065DB93 /* Platform.m in Sources */,
 				1C1D1DDF1CEFA23F007F63CF /* BaseSpriteObject.m in Sources */,
