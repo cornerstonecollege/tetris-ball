@@ -30,7 +30,7 @@
     newGameLable.fontSize = 45;
     newGameLable.position = CGPointMake(CGRectGetMidX(parent.frame),
                                    CGRectGetMidY(parent.frame) * 1.3);
-    newGameLable.fontColor = [SKColor colorWithRed:0.2 green:0.89 blue:0.43 alpha:0.8];
+    newGameLable.fontColor = [SKColor colorWithRed:1.0 green:0.31 blue:0.22 alpha:0.8];
     
     
     [parent addChild:newGameLable];
@@ -39,7 +39,7 @@
     scoreLable.fontSize = 45;
     scoreLable.position = CGPointMake(CGRectGetMidX(parent.frame),
                                    CGRectGetMidY(parent.frame));
-    scoreLable.fontColor = [SKColor colorWithRed:1 green:0.58 blue:0.22 alpha:0.8];
+    scoreLable.fontColor = [SKColor colorWithRed:0.2 green:0.89 blue:0.43 alpha:0.8];
     
     [parent addChild:scoreLable];
     
