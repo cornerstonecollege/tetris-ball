@@ -12,6 +12,14 @@
 #import "Platform.h"
 #import "ShapeBackground.h"
 
+@interface GameScene ()
+
+@property (nonatomic) NSTimeInterval lastSentTimeInterval;
+@property (nonatomic) NSTimeInterval lastSentTimeInterval1Point5;
+@property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+
+@end
+
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
@@ -67,8 +75,60 @@
     }
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+- (void)update:(CFTimeInterval)currentTime
+{
+    // Handle time delta.
+    // If we drop below 60fps, we still want everything to move the same distance.
+    CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
+    self.lastUpdateTimeInterval = currentTime;
+    // more than a second since last update
+    if (timeSinceLast > 1)
+    {
+        timeSinceLast = 1.0 / 60.0;
+        self.lastUpdateTimeInterval = currentTime;
+    }
+    
+    [self updateWithTimeSinceLastUpdate:timeSinceLast];
+    
+    for (id<GameSceneTimerDelegate> timerDelegate in self.timerDelegateArr)
+    {
+        if (timerDelegate && [timerDelegate respondsToSelector:@selector(didUpdateParentScene:)])
+        {
+            [timerDelegate didUpdateParentScene:self];
+        }
+    }
+}
+
+- (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast
+{
+    self.lastSentTimeInterval += timeSinceLast;
+    self.lastSentTimeInterval1Point5 += timeSinceLast;
+    
+    if (self.lastSentTimeInterval > 1)
+    {
+        self.lastSentTimeInterval = 0;
+        
+        for (id<GameSceneTimerDelegate> timerDelegate in self.timerDelegateArr)
+        {
+            if ([timerDelegate respondsToSelector:@selector(didUpdateTimerWithParentScene:)])
+            {
+                [timerDelegate didUpdateTimerWithParentScene:self];
+            }
+        }
+    }
+    
+    if (self.lastSentTimeInterval1Point5 > 1.3)
+    {
+        self.lastSentTimeInterval1Point5 = 0;
+        
+        for (id<GameSceneTimerDelegate> timerDelegate in self.timerDelegateArr)
+        {
+            if ([timerDelegate respondsToSelector:@selector(didUpdateTimerDelayWithParentScene:)])
+            {
+                [timerDelegate didUpdateTimerDelayWithParentScene:self];
+            }
+        }
+    }
 }
 
 @end
