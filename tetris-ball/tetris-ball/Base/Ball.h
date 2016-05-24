@@ -12,4 +12,6 @@
 
 + (instancetype) ballDefaultWithParent:(SKScene *)parent;
 
+- (void) bounce;
+
 @end

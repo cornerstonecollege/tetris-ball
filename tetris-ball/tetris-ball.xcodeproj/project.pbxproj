@@ -18,6 +18,7 @@
 		1C1D1DDF1CEFA23F007F63CF /* BaseSpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1DDE1CEFA23F007F63CF /* BaseSpriteObject.m */; };
 		1C1D1DE21CEFA738007F63CF /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1DE11CEFA738007F63CF /* Ball.m */; };
 		1C1D1DE51CEFA9B2007F63CF /* BaseCollidableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D1DE41CEFA9B2007F63CF /* BaseCollidableObject.m */; };
+		1C3CB1721CF4C10D0065DB93 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CB1711CF4C10D0065DB93 /* Platform.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		1C1D1DE11CEFA738007F63CF /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ball.m; path = Base/Ball.m; sourceTree = "<group>"; };
 		1C1D1DE31CEFA9B2007F63CF /* BaseCollidableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseCollidableObject.h; path = Base/BaseCollidableObject.h; sourceTree = "<group>"; };
 		1C1D1DE41CEFA9B2007F63CF /* BaseCollidableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseCollidableObject.m; path = Base/BaseCollidableObject.m; sourceTree = "<group>"; };
+		1C3CB1701CF4C10D0065DB93 /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
+		1C3CB1711CF4C10D0065DB93 /* Platform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Platform.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 				1C1D1DE41CEFA9B2007F63CF /* BaseCollidableObject.m */,
 				1C1D1DE01CEFA738007F63CF /* Ball.h */,
 				1C1D1DE11CEFA738007F63CF /* Ball.m */,
+				1C3CB1701CF4C10D0065DB93 /* Platform.h */,
+				1C3CB1711CF4C10D0065DB93 /* Platform.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 			files = (
 				1C1D1DE51CEFA9B2007F63CF /* BaseCollidableObject.m in Sources */,
 				1C1D1DCD1CEF9AF4007F63CF /* GameViewController.m in Sources */,
+				1C3CB1721CF4C10D0065DB93 /* Platform.m in Sources */,
 				1C1D1DDF1CEFA23F007F63CF /* BaseSpriteObject.m in Sources */,
 				1C1D1DE21CEFA738007F63CF /* Ball.m in Sources */,
 				1C1D1DC51CEF9AF4007F63CF /* AppDelegate.m in Sources */,
@@ -338,6 +344,7 @@
 				1C1D1DDB1CEF9AF4007F63CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

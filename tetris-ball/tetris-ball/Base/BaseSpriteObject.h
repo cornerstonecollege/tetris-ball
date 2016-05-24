@@ -13,4 +13,6 @@
 - (instancetype) initWithImageNamed:(NSString *)imageName position:(CGPoint)pos andParentScene:(SKScene *)parent;
 - (instancetype) initWithImageNamed:(NSString *)imageNamed imageMovableName:(NSString *)imageMovableName position:(CGPoint)pos andParentScene:(SKScene *)parent;
 
+- (void)setNewColor:(SKColor *)color;
+
 @end

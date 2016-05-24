@@ -53,5 +53,10 @@
     return self;
 }
 
+- (void)setNewColor:(SKColor *)color
+{
+    self.color = color;
+    self.colorBlendFactor = 0.4;
+}
 
 @end

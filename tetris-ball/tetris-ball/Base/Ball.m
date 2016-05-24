@@ -27,9 +27,14 @@
     self.physicsBody.categoryBitMask = BALL_MASK;
     self.physicsBody.dynamic = YES;
     self.physicsBody.allowsRotation = NO;
-    
-    self.color = [SKColor redColor];
-    self.colorBlendFactor = 0.5;
+    self.physicsBody.mass = 0.02;
+    [self setNewColor:[SKColor blueColor]];
+}
+
+- (void) bounce
+{
+    self.physicsBody.velocity = CGVectorMake(0.0, 0.0);
+    [self.physicsBody applyImpulse:CGVectorMake(0.0, 15.0)];
 }
 
 @end
