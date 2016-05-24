@@ -8,19 +8,13 @@
 
 #import "GameScene.h"
 #import "Ball.h"
+#import "LandingPageView.h"
 
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 45;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
+   __unused LandingPageView *lp = [[LandingPageView alloc]initWithGameScene:self];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
