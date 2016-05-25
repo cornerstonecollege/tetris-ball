@@ -6,11 +6,12 @@
 //  Copyright © 2016 Ideia do Luiz. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
+#import "View.h"
 @class GameScene;
 
-@interface ShopPageView : NSObject
+@interface ShopPageView : NSObject <ViewDelegate>
 
-- (instancetype)initWithGameScene: (GameScene *) parent;
++ (instancetype) sharedInstance;
 
 @end

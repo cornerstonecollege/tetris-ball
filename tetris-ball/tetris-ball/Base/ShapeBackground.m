@@ -19,6 +19,8 @@
     
     if (self)
     {
+        [self removeFromParent];
+        [parent insertChild:self atIndex:0];
     }
     
     return self;

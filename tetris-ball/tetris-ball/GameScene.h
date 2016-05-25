@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "View.h"
 
 @protocol GameSceneTimerDelegate <NSObject>
 
@@ -19,6 +20,7 @@
 
 @interface GameScene : SKScene
 
+@property (nonatomic, weak) id<ViewDelegate> viewDelegate;
 @property (nonatomic)  NSMutableArray<id<GameSceneTimerDelegate>> *timerDelegateArr;
 
 @end

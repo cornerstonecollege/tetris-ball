@@ -9,22 +9,44 @@
 #import "LandingPageView.h"
 #import "GameScene.h"
 
+@interface LandingPageView ()
+
+@property (nonatomic, weak) GameScene *parent;
+
+@end
+
 @implementation LandingPageView
 
-- (instancetype)initWithGameScene: (GameScene *) parent
+- (instancetype)init
+{
+    [NSException raise:@"Wrong Initializer" format:@"Please use the sharedInstance"];
+    return nil;
+}
+
+- (instancetype) initPrivate
 {
     self = [super init];
-    if (self) {
-        [self initializeWithParent: parent];
-    }
     return self;
 }
 
-- (void) initializeWithParent: (GameScene *) parent
++ (instancetype) sharedInstance
 {
-    SKLabelNode *newGameLable = [SKLabelNode labelNodeWithFontNamed:@"Arcade"];
-    SKLabelNode *scoreLable = [SKLabelNode labelNodeWithFontNamed:@"Arcade"];
-    SKLabelNode *shopLable = [SKLabelNode labelNodeWithFontNamed:@"Arcade"];
+    static LandingPageView *landingPage;
+    if (!landingPage)
+    {
+        landingPage = [[LandingPageView alloc]initPrivate];
+    }
+    
+    return landingPage;
+}
+
+- (void) buildViewWithParent:(GameScene *) parent
+{
+    self.parent = parent;
+    
+    SKLabelNode *newGameLable = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    SKLabelNode *scoreLable = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    SKLabelNode *shopLable = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
     
     newGameLable.text = @"New Game";
     newGameLable.fontSize = 45;
@@ -50,6 +72,10 @@
     shopLable.fontColor = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
     
     [parent addChild:shopLable];
+}
+
+- (void)viewClickReceivedWithLocation:(CGPoint)location
+{
 }
 
 @end

@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "View.h"
 @class GameScene;
 
-@interface LandingPageView : NSObject
+@interface LandingPageView : NSObject <ViewDelegate>
 
-- (instancetype)initWithGameScene: (GameScene *) parent;
++ (instancetype) sharedInstance;
 
 @end

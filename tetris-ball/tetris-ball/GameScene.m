@@ -23,16 +23,20 @@
 
 @implementation GameScene
 
--(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
- //__unused LandingPageView *lp = [[LandingPageView alloc]initWithGameScene:self];
-   __unused ShopPageView *lp = [[ShopPageView alloc]initWithGameScene:self];
-   __unused ShapeBackground *background = [[ShapeBackground alloc ] initWithColorLine:[SKColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.1] andParent:self];
+-(void)didMoveToView:(SKView *)view
+{
+    self.viewDelegate = [ShopPageView sharedInstance];
+    [self.viewDelegate buildViewWithParent:self];
+    __unused ShapeBackground *background = [[ShapeBackground alloc ] initWithColorLine:[SKColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.1] andParent:self];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-   __unused CGPoint location = [[touches anyObject] locationInNode:self];
+   CGPoint location = [[touches anyObject] locationInNode:self];
+   if(self.viewDelegate)
+   {
+       [self.viewDelegate viewClickReceivedWithLocation:location];
+   }
 }
 
 
