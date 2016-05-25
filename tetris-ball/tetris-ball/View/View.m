@@ -10,4 +10,27 @@
 
 @implementation View
 
+- (void) viewClickReceivedWithLocation:(CGPoint)location
+{
+    //Will be implamented by the sub class.
+}
+
+- (void) buildViewWithParent:(SKScene *)parent
+{
+    //Will be implamented by the sub class.
+}
+
+- (void) removeObjectsFromParent
+{
+    if (self.arrObjects)
+    {
+        [self.arrObjects enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+        {
+            [obj removeFromParent];
+        }];
+    }
+    
+    self.arrObjects = [NSMutableArray array];
+}
+
 @end

@@ -10,7 +10,7 @@
 #import "View.h"
 @class GameScene;
 
-@interface LandingPageView : NSObject <ViewDelegate>
+@interface LandingPageView : View
 
 + (instancetype) sharedInstance;
 

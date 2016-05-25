@@ -8,10 +8,9 @@
 
 #import "ShopPageView.h"
 #import "GameScene.h"
+#import "LandingPageView.h"
 
 @interface ShopPageView ()
-
-@property (nonatomic, weak) GameScene *parent;
 
 @end
 
@@ -26,6 +25,10 @@
 - (instancetype) initPrivate
 {
     self = [super init];
+    if (self)
+    {
+        self.arrObjects = [NSMutableArray array];
+    }
     return self;
 }
 
@@ -44,15 +47,18 @@
 {
     self.parent = parent;
     
-    SKLabelNode *scoreLable = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
    
-    scoreLable.text = @"Score";
-    scoreLable.fontSize = 45;
-    scoreLable.position = CGPointMake(CGRectGetMidX(parent.frame),
+    scoreLabel.text = @"Shop";
+    scoreLabel.fontSize = 45;
+    scoreLabel.position = CGPointMake(CGRectGetMidX(parent.frame),
                                       CGRectGetMidY(parent.frame) * 1.3);
-    scoreLable.fontColor = [SKColor colorWithRed:0.2 green:0.89 blue:0.43 alpha:0.8];
+    scoreLabel.fontColor = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
     
-    [parent addChild:scoreLable];
+    [parent addChild:scoreLabel];
+    
+    __weak SKLabelNode *weakScoreLbl = scoreLabel;
+    [self.arrObjects addObject:weakScoreLbl];
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
@@ -61,14 +67,15 @@
     if ([node isKindOfClass:[SKLabelNode class]])
     {
         SKLabelNode *label = (SKLabelNode*)node;
-        if ([label.text isEqualToString:@"Score"])
+        GameScene *parent = (GameScene *)self.parent;
+        if ([label.text isEqualToString:@"Shop"])
         {
-            NSLog(@"score clicked");
+            [parent moveToPage:[LandingPageView sharedInstance]];
         }
     }
     else
     {
-        NSLog(@"score not clicked");
+        NSLog(@"shop not clicked");
     }
 }
 

@@ -8,14 +8,15 @@
 
 #import "LandingPageView.h"
 #import "GameScene.h"
+#import "ShopPageView.h"
 
 @interface LandingPageView ()
-
-@property (nonatomic, weak) GameScene *parent;
 
 @end
 
 @implementation LandingPageView
+
+#define SHOP_STR @"Shop"
 
 - (instancetype)init
 {
@@ -26,6 +27,10 @@
 - (instancetype) initPrivate
 {
     self = [super init];
+    if (self)
+    {
+        self.arrObjects = [NSMutableArray array];
+    }
     return self;
 }
 
@@ -44,38 +49,59 @@
 {
     self.parent = parent;
     
-    SKLabelNode *newGameLable = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
-    SKLabelNode *scoreLable = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
-    SKLabelNode *shopLable = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    SKLabelNode *newGameLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    SKLabelNode *shopLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
     
-    newGameLable.text = @"New Game";
-    newGameLable.fontSize = 45;
-    newGameLable.position = CGPointMake(CGRectGetMidX(parent.frame),
+    newGameLabel.text = @"New Game";
+    newGameLabel.fontSize = 45;
+    newGameLabel.position = CGPointMake(CGRectGetMidX(parent.frame),
                                    CGRectGetMidY(parent.frame) * 1.3);
-    newGameLable.fontColor = [SKColor colorWithRed:1.0 green:0.31 blue:0.22 alpha:0.8];
+    newGameLabel.fontColor = [SKColor colorWithRed:1.0 green:0.31 blue:0.22 alpha:0.8];
     
     
-    [parent addChild:newGameLable];
+    [parent addChild:newGameLabel];
     
-    scoreLable.text = @"Score";
-    scoreLable.fontSize = 45;
-    scoreLable.position = CGPointMake(CGRectGetMidX(parent.frame),
+    scoreLabel.text = @"Score";
+    scoreLabel.fontSize = 45;
+    scoreLabel.position = CGPointMake(CGRectGetMidX(parent.frame),
                                    CGRectGetMidY(parent.frame));
-    scoreLable.fontColor = [SKColor colorWithRed:0.2 green:0.89 blue:0.43 alpha:0.8];
+    scoreLabel.fontColor = [SKColor colorWithRed:0.2 green:0.89 blue:0.43 alpha:0.8];
     
-    [parent addChild:scoreLable];
+    [parent addChild:scoreLabel];
     
-    shopLable.text = @"Shop";
-    shopLable.fontSize = 45;
-    shopLable.position = CGPointMake(CGRectGetMidX(parent.frame),
+    shopLabel.text = SHOP_STR;
+    shopLabel.fontSize = 45;
+    shopLabel.position = CGPointMake(CGRectGetMidX(parent.frame),
                                    CGRectGetMidY(parent.frame) * 0.7);
-    shopLable.fontColor = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
+    shopLabel.fontColor = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
     
-    [parent addChild:shopLable];
+    [parent addChild:shopLabel];
+    
+    __weak SKLabelNode *weakNewGameLbl = newGameLabel;
+    __weak SKLabelNode *weakScoreLbl = scoreLabel;
+    __weak SKLabelNode *weakShopLbl = shopLabel;
+    
+    [self.arrObjects addObjectsFromArray:@[weakNewGameLbl, weakScoreLbl, weakShopLbl]];
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
+    SKNode *node = [self.parent nodeAtPoint:location];
+    if ([node isKindOfClass:[SKLabelNode class]])
+    {
+        
+        SKLabelNode *label = (SKLabelNode*)node;
+        GameScene *parent = (GameScene *)self.parent;
+        if ([label.text isEqualToString:SHOP_STR])
+        {
+            [parent moveToPage:[ShopPageView sharedInstance]];
+        }
+    }
+    else
+    {
+        NSLog(@"score not clicked");
+    }
 }
 
 @end

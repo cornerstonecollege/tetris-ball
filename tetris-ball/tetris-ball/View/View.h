@@ -14,9 +14,13 @@
 
 - (void) viewClickReceivedWithLocation:(CGPoint)location;
 - (void) buildViewWithParent:(SKScene *)parent;
+- (void) removeObjectsFromParent;
 
 @end
 
-@interface View : NSObject
+@interface View : NSObject <ViewDelegate>
+
+@property (nonatomic, weak) SKScene *parent;
+@property (nonatomic) NSMutableArray<SKNode *> *arrObjects;
 
 @end

@@ -23,4 +23,6 @@
 @property (nonatomic, weak) id<ViewDelegate> viewDelegate;
 @property (nonatomic)  NSMutableArray<id<GameSceneTimerDelegate>> *timerDelegateArr;
 
+- (void) moveToPage:(id<ViewDelegate>)page;
+
 @end

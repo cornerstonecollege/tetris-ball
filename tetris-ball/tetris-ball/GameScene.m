@@ -25,9 +25,16 @@
 
 -(void)didMoveToView:(SKView *)view
 {
-    self.viewDelegate = [ShopPageView sharedInstance];
+    self.viewDelegate = [LandingPageView sharedInstance];
     [self.viewDelegate buildViewWithParent:self];
     __unused ShapeBackground *background = [[ShapeBackground alloc ] initWithColorLine:[SKColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.1] andParent:self];
+}
+
+-(void)moveToPage:(id<ViewDelegate>)page
+{
+    [self.viewDelegate removeObjectsFromParent];
+    self.viewDelegate = page;
+    [self.viewDelegate buildViewWithParent:self];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

@@ -10,7 +10,7 @@
 #import "View.h"
 @class GameScene;
 
-@interface ShopPageView : NSObject <ViewDelegate>
+@interface ShopPageView : View
 
 + (instancetype) sharedInstance;
 
