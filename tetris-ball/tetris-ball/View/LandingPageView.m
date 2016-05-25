@@ -9,6 +9,7 @@
 #import "LandingPageView.h"
 #import "GameScene.h"
 #import "ShopPageView.h"
+#import "NewGameView.h"
 
 @interface LandingPageView ()
 
@@ -17,6 +18,7 @@
 @implementation LandingPageView
 
 #define SHOP_STR @"Shop"
+#define NEW_GAME_STR @"New Game"
 
 - (instancetype)init
 {
@@ -53,7 +55,7 @@
     SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
     SKLabelNode *shopLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
     
-    newGameLabel.text = @"New Game";
+    newGameLabel.text = NEW_GAME_STR;
     newGameLabel.fontSize = 45;
     newGameLabel.position = CGPointMake(CGRectGetMidX(parent.frame),
                                    CGRectGetMidY(parent.frame) * 1.3);
@@ -96,6 +98,10 @@
         if ([label.text isEqualToString:SHOP_STR])
         {
             [parent moveToPage:[ShopPageView sharedInstance]];
+        }
+        else if ([label.text isEqualToString:NEW_GAME_STR])
+        {
+            [parent moveToPage:[NewGameView sharedInstance]];
         }
     }
     else

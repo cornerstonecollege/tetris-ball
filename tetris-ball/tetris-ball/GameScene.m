@@ -7,9 +7,7 @@
 //
 
 #import "GameScene.h"
-#import "Ball.h"
 #import "LandingPageView.h"
-#import "Platform.h"
 #import "ShapeBackground.h"
 #import "ShopPageView.h"
 
