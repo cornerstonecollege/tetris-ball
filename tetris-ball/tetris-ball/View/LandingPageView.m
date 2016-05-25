@@ -24,7 +24,7 @@
 {
     SKLabelNode *newGameLable = [SKLabelNode labelNodeWithFontNamed:@"Arcade"];
     SKLabelNode *scoreLable = [SKLabelNode labelNodeWithFontNamed:@"Arcade"];
-    SKLabelNode *settingsLable = [SKLabelNode labelNodeWithFontNamed:@"Arcade"];
+    SKLabelNode *shopLable = [SKLabelNode labelNodeWithFontNamed:@"Arcade"];
     
     newGameLable.text = @"New Game";
     newGameLable.fontSize = 45;
@@ -43,13 +43,13 @@
     
     [parent addChild:scoreLable];
     
-    settingsLable.text = @"Settings";
-    settingsLable.fontSize = 45;
-    settingsLable.position = CGPointMake(CGRectGetMidX(parent.frame),
+    shopLable.text = @"Shop";
+    shopLable.fontSize = 45;
+    shopLable.position = CGPointMake(CGRectGetMidX(parent.frame),
                                    CGRectGetMidY(parent.frame) * 0.7);
-    settingsLable.fontColor = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
+    shopLable.fontColor = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
     
-    [parent addChild:settingsLable];
+    [parent addChild:shopLable];
 }
 
 @end
