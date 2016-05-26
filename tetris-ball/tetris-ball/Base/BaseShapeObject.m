@@ -28,7 +28,7 @@
     if (self)
     {
         self.path = path;
-        self.lineWidth = 1.0;
+        self.lineWidth = lineWidth;
         [self setStrokeColor:colorLine];
         [parent addChild:self];
     }

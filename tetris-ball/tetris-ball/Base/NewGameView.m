@@ -8,6 +8,7 @@
 
 #import "NewGameView.h"
 #import "SPlatform.h"
+#import "ShapeContainer.h"
 
 @implementation NewGameView
 
@@ -45,7 +46,7 @@
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
-    static Platform *platform;
+    /*static Platform *platform;
     if (!platform)
     {
         platform = [[SPlatform alloc] initWithParent:self.parent];
@@ -57,7 +58,15 @@
     {
         SKAction *rotation = [SKAction rotateByAngle:M_PI_2 duration:0.25];
         [platform runAction:rotation];
-    }
+    }*/
+    SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Ball"];
+    node.xScale = 0.1;
+    node.yScale = 0.1;
+    node.color = [SKColor blackColor];
+    node.colorBlendFactor = 0.4;
+    __unused ShapeContainer *container = [ShapeContainer containerDefaultWithParent:self.parent andNode:node];
+    
+    container.position = CGPointMake(CGRectGetMidX(self.parent.frame), CGRectGetMidY(self.parent.frame));
 }
 
 @end
