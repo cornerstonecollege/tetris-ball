@@ -9,6 +9,8 @@
 #import "ShopPageView.h"
 #import "GameScene.h"
 #import "LandingPageView.h"
+#import "ShapeContainer.h"
+
 
 @interface ShopPageView ()
 
@@ -47,18 +49,33 @@
 {
     self.parent = parent;
     
-    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    SKLabelNode *shopLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
    
-    scoreLabel.text = @"Shop";
-    scoreLabel.fontSize = 45;
-    scoreLabel.position = CGPointMake(CGRectGetMidX(parent.frame),
-                                      CGRectGetMidY(parent.frame) * 1.3);
-    scoreLabel.fontColor = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
+    shopLabel.text = @"Shop";
+    shopLabel.fontSize = 45;
+    shopLabel.position = CGPointMake(CGRectGetMidX(parent.frame),
+                                      parent.frame.size.height - shopLabel.frame.size.height - 40);
+    shopLabel.fontColor = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
     
-    [parent addChild:scoreLabel];
+    [parent addChild:shopLabel];
     
-    __weak SKLabelNode *weakScoreLbl = scoreLabel;
-    [self.arrObjects addObject:weakScoreLbl];
+    __weak SKLabelNode *weakshopLbl = shopLabel;
+    [self.arrObjects addObject:weakshopLbl];
+    
+    SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Ball"];
+    node.xScale = 0.1;
+    node.yScale = 0.1;
+    node.color = [SKColor blackColor];
+    node.colorBlendFactor = 0.4;
+    __unused ShapeContainer *container = [ShapeContainer containerDefaultWithParent:self.parent andNode:node];
+    
+    container.position = CGPointMake(CGRectGetMidX(self.parent.frame)*0.6, CGRectGetMidY(self.parent.frame)*1.3);
+    
+    
+    /*for (int i; i < 5; i++)
+    {
+        <#statements#>
+    }*/
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
