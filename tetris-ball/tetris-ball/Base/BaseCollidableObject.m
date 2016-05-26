@@ -10,6 +10,17 @@
 
 @implementation BaseCollidableObject
 
+- (instancetype)initWithImageNamed:(NSString *)name
+{
+    self = [super initWithImageNamed:name];
+    if (self)
+    {
+        [self initializePhysicsBody];
+    }
+    
+    return self;
+}
+
 - (instancetype)initWithImageNamed:(NSString *)imageName position:(CGPoint)pos andParentScene:(SKScene *)parent
 {
     self = [super initWithImageNamed:imageName position:pos andParentScene:parent];

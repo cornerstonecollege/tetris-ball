@@ -31,7 +31,7 @@
         {
             if(matrix[i][j])
             {
-                SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Block"];
+                BaseCollidableObject *node = [[BaseCollidableObject alloc] initWithImageNamed:@"Default-Block"];
                 
                 CGFloat xPosition = 50;
                 CGFloat yPosition = 50;
@@ -43,6 +43,11 @@
                 yPosition = j == 2 ? node.frame.size.width + j * 50 : yPosition;
                 
                 node.position = CGPointMake(xPosition, yPosition);
+                node.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:node.size];
+                node.physicsBody.dynamic = NO;
+                node.physicsBody.categoryBitMask = PLATFORM_MASK;
+                node.physicsBody.contactTestBitMask = BALL_MASK;
+                
                 [self addChild:node];
             }
         }
@@ -51,7 +56,6 @@
 
 - (void) initialize
 {
-    self.physicsBody.categoryBitMask = PLATFORM_MASK;
     [self setNewColor:[SKColor redColor]];
 }
 

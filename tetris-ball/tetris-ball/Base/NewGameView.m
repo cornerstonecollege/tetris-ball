@@ -7,8 +7,12 @@
 //
 
 #import "NewGameView.h"
-#import "SPlatform.h"
-#import "ShapeContainer.h"
+#import "OPlatform.h"
+#import "Ball.h"
+
+@interface NewGameView () <SKPhysicsContactDelegate>
+
+@end
 
 @implementation NewGameView
 
@@ -42,31 +46,62 @@
 - (void)buildViewWithParent:(SKScene *)parent
 {
     self.parent = parent;
+    parent.physicsWorld.contactDelegate = self;
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
-    /*static Platform *platform;
+    static Ball *ball;
+    if (!ball)
+    {
+        ball = [Ball ballDefaultWithParent:self.parent];
+        ball.xScale = 0.05;
+        ball.yScale = 0.05;
+        ball.position = CGPointMake(CGRectGetMidX(self.parent.frame),CGRectGetMidY(self.parent.frame) + 100);
+    }
+    
+    
+    static Platform *platform;
     if (!platform)
     {
-        platform = [[SPlatform alloc] initWithParent:self.parent];
+        platform = [[OPlatform alloc] initWithParent:self.parent];
         platform.xScale = 0.067;
         platform.yScale = 0.067;
         platform.position = CGPointMake(CGRectGetMidX(self.parent.frame),CGRectGetMidY(self.parent.frame));
     }
-    else
-    {
-        SKAction *rotation = [SKAction rotateByAngle:M_PI_2 duration:0.25];
-        [platform runAction:rotation];
-    }*/
-    SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Ball"];
-    node.xScale = 0.1;
-    node.yScale = 0.1;
-    node.color = [SKColor blackColor];
-    node.colorBlendFactor = 0.4;
-    __unused ShapeContainer *container = [ShapeContainer containerDefaultWithParent:self.parent andNode:node];
+}
+
+- (void)didEndContact:(SKPhysicsContact *)contact
+{
+    SKPhysicsBody *ballBody = nil;
+    ballBody = (contact.bodyA.categoryBitMask & BALL_MASK) != 0 ? contact.bodyA : ballBody;
+    ballBody = (contact.bodyB.categoryBitMask & BALL_MASK) != 0 ? contact.bodyB : ballBody;
     
-    container.position = CGPointMake(CGRectGetMidX(self.parent.frame), CGRectGetMidY(self.parent.frame));
+    SKPhysicsBody *platformBody = nil;
+    platformBody = (contact.bodyA.categoryBitMask & PLATFORM_MASK) != 0 ? contact.bodyA : platformBody;
+    platformBody = (contact.bodyB.categoryBitMask & PLATFORM_MASK) != 0 ? contact.bodyB : platformBody;
+    
+    if (ballBody && platformBody)
+    {
+        [self makeBallBounce:(Ball *)ballBody.node andRotatePlatform:(Platform *)platformBody.node.parent];
+    }
+    
+    // otherwise do nothing
+}
+
+- (void) makeBallBounce:(Ball *)ball andRotatePlatform:(Platform *)platform
+{
+    static BOOL isRunning;
+    if (isRunning)
+        return;
+    
+    isRunning = YES;
+    
+    [ball bounce];
+    SKAction *action = [SKAction rotateByAngle:M_PI_2 duration:0.25];
+    [platform runAction:action completion:^{
+        isRunning = NO;
+    }];
 }
 
 @end

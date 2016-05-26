@@ -10,18 +10,6 @@
 
 @implementation BaseSpriteObject
 
-- (instancetype)initWithImageNamed:(NSString *)name
-{
-    [NSException raise:@"Wrong initializer" format:@"Use initWithImageNamed:position:andParentScene:"];
-    return nil;
-}
-
-+ (instancetype)spriteNodeWithImageNamed:(NSString *)name
-{
-    [NSException raise:@"Wrong initializer" format:@"Use initWithImageNamed:position:andParentScene:"];
-    return nil;
-}
-
 - (instancetype) initWithImageNamed:(NSString *)imageNamed position:(CGPoint)pos andParentScene:(SKScene *)parent;
 {
     self = [super initWithImageNamed:imageNamed];
