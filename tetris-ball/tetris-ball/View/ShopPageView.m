@@ -69,13 +69,7 @@
     node.colorBlendFactor = 0.4;
     __unused ShapeContainer *container = [ShapeContainer containerDefaultWithParent:self.parent andNode:node];
     
-    container.position = CGPointMake(CGRectGetMidX(self.parent.frame)*0.6, CGRectGetMidY(self.parent.frame)*1.3);
-    
-    
-    /*for (int i; i < 5; i++)
-    {
-        <#statements#>
-    }*/
+    container.position = CGPointMake(10, parent.frame.size.height - container.frame.size.height - 80);
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location

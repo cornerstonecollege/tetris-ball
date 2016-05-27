@@ -23,7 +23,7 @@
     skView.ignoresSiblingOrder = NO;
     
     // Create and configure the scene.
-    GameScene *scene = [GameScene nodeWithFileNamed:@"GameScene"];
+    GameScene *scene = [GameScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     scene.backgroundColor = [SKColor whiteColor];
     
