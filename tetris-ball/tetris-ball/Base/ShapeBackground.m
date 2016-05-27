@@ -31,13 +31,13 @@
     CGSize size = parent.size;
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
     
-    for (int y = SPACE_LINE; y < size.width; y += SPACE_LINE)
+    for (int y = SPACE_LINE; y < size.height; y += SPACE_LINE)
     {
         CGPathMoveToPoint(pathToDraw, NULL, 0.0, y);
         CGPathAddLineToPoint(pathToDraw, NULL, size.width, y);
     }
     
-    for (int x = SPACE_LINE; x < size.height; x += SPACE_LINE)
+    for (int x = SPACE_LINE; x < size.width; x += SPACE_LINE)
     {
         CGPathMoveToPoint(pathToDraw, NULL, x, 0.0);
         CGPathAddLineToPoint(pathToDraw, NULL, x, size.height);
