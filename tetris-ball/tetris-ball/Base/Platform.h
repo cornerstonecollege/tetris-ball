@@ -13,5 +13,6 @@ typedef BOOL matrixPlatform[3][3];
 @interface Platform : BaseCollidableObject
 
 - (instancetype) initWithMatrix:(matrixPlatform)matrix andParent:(SKScene *)parent;
+- (void) rotateWithCompletion:(void(^)())completion;
 
 @end

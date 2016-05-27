@@ -34,6 +34,7 @@
 		8007D8151CF60E8800FAA598 /* ShopPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8007D8141CF60E8800FAA598 /* ShopPageView.m */; };
 		80F263221CF4C7DA00AECF8B /* LandingPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F263211CF4C7DA00AECF8B /* LandingPageView.m */; };
 		80F263251CF4CB3E00AECF8B /* ARCADE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 80F263241CF4CB3E00AECF8B /* ARCADE.TTF */; };
+		95D53A7E1CF8B02B005F03F0 /* ScorePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D53A7D1CF8B02B005F03F0 /* ScorePageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,8 @@
 		80F263201CF4C7DA00AECF8B /* LandingPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LandingPageView.h; path = View/LandingPageView.h; sourceTree = "<group>"; };
 		80F263211CF4C7DA00AECF8B /* LandingPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LandingPageView.m; path = View/LandingPageView.m; sourceTree = "<group>"; };
 		80F263241CF4CB3E00AECF8B /* ARCADE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ARCADE.TTF; path = Fonts/ARCADE.TTF; sourceTree = "<group>"; };
+		95D53A7C1CF8B02B005F03F0 /* ScorePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScorePageView.h; path = View/ScorePageView.h; sourceTree = "<group>"; };
+		95D53A7D1CF8B02B005F03F0 /* ScorePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScorePageView.m; path = View/ScorePageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,8 @@
 				8007D8141CF60E8800FAA598 /* ShopPageView.m */,
 				1C90C9B41CF6314900342F72 /* NewGameView.h */,
 				1C90C9B51CF6314900342F72 /* NewGameView.m */,
+				95D53A7C1CF8B02B005F03F0 /* ScorePageView.h */,
+				95D53A7D1CF8B02B005F03F0 /* ScorePageView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				1C90C9C21CF63A4600342F72 /* IPlatform.m in Sources */,
 				1C90C9CB1CF63C6E00342F72 /* SPlatform.m in Sources */,
 				8007D8151CF60E8800FAA598 /* ShopPageView.m in Sources */,
+				95D53A7E1CF8B02B005F03F0 /* ScorePageView.m in Sources */,
 				1C3CB1781CF4E65D0065DB93 /* ShapeBackground.m in Sources */,
 				1C1D1DCD1CEF9AF4007F63CF /* GameViewController.m in Sources */,
 				1C1D1DDF1CEFA23F007F63CF /* BaseSpriteObject.m in Sources */,

@@ -9,6 +9,7 @@
 #import "NewGameView.h"
 #import "OPlatform.h"
 #import "Ball.h"
+#import "ScorePageView.h"
 
 @interface NewGameView () <SKPhysicsContactDelegate>
 
@@ -98,8 +99,7 @@
     isRunning = YES;
     
     [ball bounce];
-    SKAction *action = [SKAction rotateByAngle:M_PI_2 duration:0.25];
-    [platform runAction:action completion:^{
+    [platform rotateWithCompletion:^{
         isRunning = NO;
     }];
 }

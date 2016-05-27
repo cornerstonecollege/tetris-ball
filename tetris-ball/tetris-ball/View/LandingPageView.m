@@ -10,6 +10,7 @@
 #import "GameScene.h"
 #import "ShopPageView.h"
 #import "NewGameView.h"
+#import "ScorePageView.h"
 
 @interface LandingPageView ()
 
@@ -19,6 +20,7 @@
 
 #define SHOP_STR @"Shop"
 #define NEW_GAME_STR @"New Game"
+#define SCORE_STR @"Score"
 
 - (instancetype)init
 {
@@ -64,7 +66,7 @@
     
     [parent addChild:newGameLabel];
     
-    scoreLabel.text = @"Score";
+    scoreLabel.text = SCORE_STR;
     scoreLabel.fontSize = 45;
     scoreLabel.position = CGPointMake(CGRectGetMidX(parent.frame),
                                    CGRectGetMidY(parent.frame));
@@ -102,6 +104,10 @@
         else if ([label.text isEqualToString:NEW_GAME_STR])
         {
             [parent moveToPage:[NewGameView sharedInstance]];
+        }
+        else if ([label.text isEqualToString:SCORE_STR])
+        {
+            [parent moveToPage:[ScorePageView sharedInstance]];
         }
     }
     else

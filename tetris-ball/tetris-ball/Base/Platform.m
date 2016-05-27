@@ -72,4 +72,10 @@
     }];
 }
 
+- (void) rotateWithCompletion:(void (^)())completion
+{
+    SKAction *action = [SKAction rotateByAngle:M_PI_2 duration:0.25];
+    [self runAction:action completion:completion];
+}
+
 @end
