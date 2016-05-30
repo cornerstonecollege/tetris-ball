@@ -10,6 +10,7 @@
 #import "GameScene.h"
 #import "Platform.h"
 #import "Ball.h"
+#import "ShapeBackground.h"
 
 @interface NewGameView () <SKPhysicsContactDelegate, GameSceneTimerDelegate>
 
@@ -140,6 +141,8 @@
         [platform1 runAction:movePlatform completion:^{
             [platform1 removeFromParent];
         }];
+        
+        [ShapeBackground moveBackgroundsWithParent:(GameScene *)gameScene];
     }
 }
 
