@@ -85,12 +85,12 @@
         ball = [Ball ballDefaultWithParent:self.parent andColor:[SKColor redColor]];
         ball.position = CGPointMake(CGRectGetMidX(self.parent.frame) + ball.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
         
-        static Platform *platform;
+        /*static Platform *platform;
         if (!platform)
         {
             platform = [Platform platformDefaultWithParent:self.parent andColor:[SKColor blueColor]];
             platform.position = CGPointMake(CGRectGetMidX(self.parent.frame),CGRectGetMidY(self.parent.frame));
-        }
+        }*/
     }
 }
 
@@ -127,7 +127,20 @@
 
 - (void) didUpdateTimerWithParentScene:(SKScene *)gameScene
 {
-    NSLog(@"dsdsdss");
+    int randomN = arc4random_uniform(2);
+    
+    if (randomN)
+    {
+        Platform *platform1;
+        platform1 = [Platform platformDefaultWithParent:self.parent andColor:[SKColor blueColor]];
+        platform1.position = CGPointMake(self.parent.size.width + platform1.frame.size.width,
+                                         CGRectGetMidY(self.parent.frame));
+        SKAction *movePlatform = [SKAction moveByX:-self.parent.frame.size.width - self.parent.frame.size.width/2 y:0 duration:0.03 * self.parent.size.width];
+    
+        [platform1 runAction:movePlatform completion:^{
+            [platform1 removeFromParent];
+        }];
+    }
 }
 
 @end
