@@ -24,7 +24,13 @@
     self.timerDelegateArr = [NSMutableArray array];
     self.viewDelegate = [NewGameView sharedInstance];
     [self.viewDelegate buildViewWithParent:self];
-    __unused ShapeBackground *background = [[ShapeBackground alloc ] initWithColorLine:[SKColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.1] andParent:self];
+    if (!self.background)
+        self.background = [[ShapeBackground alloc ] initWithColorLine:[SKColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.1] andParent:self];
+    if (!self.background2)
+    {
+        self.background2 = [[ShapeBackground alloc ] initWithColorLine:[SKColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.1] andParent:self];
+        self.background2.position = CGPointMake(self.size.width, self.background2.position.y);
+    }
 }
 
 -(void)moveToPage:(id<ViewDelegate>)page

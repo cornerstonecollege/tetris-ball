@@ -14,4 +14,6 @@
 
 - (instancetype) initWithPath:(CGMutablePathRef)path lineWidth:(CGFloat)lineWidth colorLine:(SKColor *)colorLine andParent:(SKScene *)parent;
 
+- (void) moveTo:(CGPoint)point duration:(NSTimeInterval)duration andCompletion:(void (^)())completion;
+
 @end

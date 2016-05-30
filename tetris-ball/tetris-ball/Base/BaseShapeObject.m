@@ -36,4 +36,11 @@
     return self;
 }
 
+
+- (void) moveTo:(CGPoint)point duration:(NSTimeInterval)duration andCompletion:(void (^)())completion
+{
+    SKAction *move = [SKAction moveTo:point duration: duration];
+    [self runAction:move completion:completion];
+}
+
 @end

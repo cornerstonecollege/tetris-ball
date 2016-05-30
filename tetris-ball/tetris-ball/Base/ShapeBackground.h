@@ -7,9 +7,11 @@
 //
 
 #import "BaseShapeObject.h"
+@class GameScene;
 
 @interface ShapeBackground : BaseShapeObject
 
 - (instancetype)initWithColorLine:(SKColor *)colorLine andParent:(SKScene *)parent;
++ (void) moveBackgroundsWithParent:(GameScene *)parent;
 
 @end

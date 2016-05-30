@@ -8,6 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "View.h"
+#import "ShapeBackground.h"
 
 @protocol GameSceneTimerDelegate <NSObject>
 
@@ -22,6 +23,9 @@
 
 @property (nonatomic, weak) id<ViewDelegate> viewDelegate;
 @property (nonatomic)  NSMutableArray<id<GameSceneTimerDelegate>> *timerDelegateArr;
+@property (nonatomic) ShapeBackground *background;
+@property (nonatomic) ShapeBackground *background2;
+
 
 - (void) moveToPage:(id<ViewDelegate>)page;
 
