@@ -6,6 +6,8 @@
 //  Copyright © 2016 Ideia do Luiz. All rights reserved.
 //
 
+#import <CoreMotion/CoreMotion.h>
+
 #import "NewGameView.h"
 #import "GameScene.h"
 #import "Platform.h"
@@ -14,7 +16,9 @@
 
 @interface NewGameView () <SKPhysicsContactDelegate, GameSceneTimerDelegate>
 
+@property (nonatomic) CMMotionManager *motionManager;
 @property (nonatomic) BOOL isNotVertical;
+@property (nonatomic, weak) Ball *player;
 
 @end
 
@@ -32,6 +36,7 @@
     if (self)
     {
         self.arrObjects = [NSMutableArray array];
+        [self initializeGyroscope];
     }
     return self;
 }
@@ -70,7 +75,6 @@
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
     SKNode *node = [self.parent nodeAtPoint:location];
-    static Ball *ball;
     if ([node isKindOfClass:[SKLabelNode class]])
     {
         SKLabelNode *label = (SKLabelNode*)node;
@@ -82,16 +86,8 @@
     }
     else
     {
-        
-        ball = [Ball ballDefaultWithParent:self.parent andColor:[SKColor redColor]];
-        ball.position = CGPointMake(CGRectGetMidX(self.parent.frame) + ball.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
-        
-        /*static Platform *platform;
-        if (!platform)
-        {
-            platform = [Platform platformDefaultWithParent:self.parent andColor:[SKColor blueColor]];
-            platform.position = CGPointMake(CGRectGetMidX(self.parent.frame),CGRectGetMidY(self.parent.frame));
-        }*/
+        self.player = [Ball ballDefaultWithParent:self.parent andColor:[SKColor redColor]];
+        self.player.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
     }
 }
 
@@ -141,9 +137,26 @@
         [platform1 runAction:movePlatform completion:^{
             [platform1 removeFromParent];
         }];
-        
-        [ShapeBackground moveBackgroundsWithParent:(GameScene *)gameScene];
     }
+    
+    [ShapeBackground moveBackgroundsWithParent:(GameScene *)gameScene];
+}
+
+- (void) initializeGyroscope
+{
+    self.motionManager = [[CMMotionManager alloc] init];
+    self.motionManager.accelerometerUpdateInterval = 0.2;
+    self.motionManager.gyroUpdateInterval = 0.2;
+    [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
+                                             withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error)
+     {
+         [self outputAccelerationData:accelerometerData.acceleration];
+     }];
+}
+
+-(void)outputAccelerationData:(CMAcceleration)acceleration
+{
+    [self.player applyAccelerometerForce:acceleration.x];
 }
 
 @end

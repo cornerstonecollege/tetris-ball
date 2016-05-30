@@ -66,7 +66,7 @@
 - (void) bounceHorizontally
 {
     self.physicsBody.velocity = CGVectorMake(0.0, 0.0);
-    [self.physicsBody applyImpulse:CGVectorMake(5.0, 15.0)];
+    [self.physicsBody applyImpulse:CGVectorMake(5.0, 10.0)];
 }
 
 @end
