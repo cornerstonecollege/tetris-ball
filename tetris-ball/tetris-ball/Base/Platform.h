@@ -6,13 +6,10 @@
 //  Copyright © 2016 Ideia do Luiz. All rights reserved.
 //
 
-#import "BaseCollidableObject.h"
+#import "BaseShapeCollidableObject.h"
 
-typedef BOOL matrixPlatform[3][3];
+@interface Platform : BaseShapeCollidableObject
 
-@interface Platform : BaseCollidableObject
-
-- (instancetype) initWithMatrix:(matrixPlatform)matrix andParent:(SKScene *)parent;
-- (void) rotateWithCompletion:(void(^)())completion;
++ (instancetype) platformDefaultWithParent:(SKScene *)parent andColor:(SKColor *)color;
 
 @end

@@ -6,12 +6,15 @@
 //  Copyright © 2016 Ideia do Luiz. All rights reserved.
 //
 
-#import "BaseCollidableObject.h"
+#import <SpriteKit/SpriteKit.h>
+#import "BaseShapeCollidableObject.h"
 
-@interface Ball : BaseCollidableObject
+@interface Ball : BaseShapeCollidableObject
 
-+ (instancetype) ballDefaultWithParent:(SKScene *)parent;
++ (instancetype) ballDefaultWithParent:(SKScene *)parent andColor:(SKColor *)color;
 
 - (void) bounce;
+- (void) applyAccelerometerForce:(double)forceX;
+- (void) bounceHorizontally;
 
 @end

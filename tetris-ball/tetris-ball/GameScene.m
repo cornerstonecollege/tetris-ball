@@ -5,11 +5,9 @@
 //  Created by CICCC1 on 2016-05-20.
 //  Copyright (c) 2016 Ideia do Luiz. All rights reserved.
 //
-
+#import "NewGameView.h"
 #import "GameScene.h"
-#import "LandingPageView.h"
 #import "ShapeBackground.h"
-#import "ShopPageView.h"
 
 @interface GameScene ()
 
@@ -23,7 +21,8 @@
 
 -(void)didMoveToView:(SKView *)view
 {
-    self.viewDelegate = [LandingPageView sharedInstance];
+    self.timerDelegateArr = [NSMutableArray array];
+    self.viewDelegate = [NewGameView sharedInstance];
     [self.viewDelegate buildViewWithParent:self];
     __unused ShapeBackground *background = [[ShapeBackground alloc ] initWithColorLine:[SKColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.1] andParent:self];
 }

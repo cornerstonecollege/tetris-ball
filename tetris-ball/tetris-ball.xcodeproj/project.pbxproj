@@ -24,14 +24,8 @@
 		1C90C9B31CF6149D00342F72 /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9B21CF6149D00342F72 /* View.m */; };
 		1C90C9B61CF6314900342F72 /* NewGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9B51CF6314900342F72 /* NewGameView.m */; };
 		1C90C9B91CF637C000342F72 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9B81CF637C000342F72 /* Platform.m */; };
-		1C90C9BC1CF637DF00342F72 /* TPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9BB1CF637DF00342F72 /* TPlatform.m */; };
-		1C90C9BF1CF6397300342F72 /* OPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9BE1CF6397300342F72 /* OPlatform.m */; };
-		1C90C9C21CF63A4600342F72 /* IPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9C11CF63A4600342F72 /* IPlatform.m */; };
-		1C90C9C51CF63B5800342F72 /* LPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9C41CF63B5800342F72 /* LPlatform.m */; };
-		1C90C9C81CF63C0700342F72 /* JPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9C71CF63C0700342F72 /* JPlatform.m */; };
-		1C90C9CB1CF63C6E00342F72 /* SPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9CA1CF63C6E00342F72 /* SPlatform.m */; };
-		1C90C9CE1CF63D3900342F72 /* ZPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9CD1CF63D3900342F72 /* ZPlatform.m */; };
 		8007D8151CF60E8800FAA598 /* ShopPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8007D8141CF60E8800FAA598 /* ShopPageView.m */; };
+		80D638D31CFCB95C003528B1 /* BaseShapeCollidableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D638D21CFCB95C003528B1 /* BaseShapeCollidableObject.m */; };
 		80F263221CF4C7DA00AECF8B /* LandingPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F263211CF4C7DA00AECF8B /* LandingPageView.m */; };
 		80F263251CF4CB3E00AECF8B /* ARCADE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 80F263241CF4CB3E00AECF8B /* ARCADE.TTF */; };
 		95D53A7E1CF8B02B005F03F0 /* ScorePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D53A7D1CF8B02B005F03F0 /* ScorePageView.m */; };
@@ -69,22 +63,10 @@
 		1C90C9B51CF6314900342F72 /* NewGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewGameView.m; path = Base/NewGameView.m; sourceTree = "<group>"; };
 		1C90C9B71CF637C000342F72 /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Platform.h; path = Base/Platform.h; sourceTree = "<group>"; };
 		1C90C9B81CF637C000342F72 /* Platform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Platform.m; path = Base/Platform.m; sourceTree = "<group>"; };
-		1C90C9BA1CF637DF00342F72 /* TPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPlatform.h; path = Base/TPlatform.h; sourceTree = "<group>"; };
-		1C90C9BB1CF637DF00342F72 /* TPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPlatform.m; path = Base/TPlatform.m; sourceTree = "<group>"; };
-		1C90C9BD1CF6397300342F72 /* OPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPlatform.h; path = Base/OPlatform.h; sourceTree = "<group>"; };
-		1C90C9BE1CF6397300342F72 /* OPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPlatform.m; path = Base/OPlatform.m; sourceTree = "<group>"; };
-		1C90C9C01CF63A4600342F72 /* IPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlatform.h; path = Base/IPlatform.h; sourceTree = "<group>"; };
-		1C90C9C11CF63A4600342F72 /* IPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPlatform.m; path = Base/IPlatform.m; sourceTree = "<group>"; };
-		1C90C9C31CF63B5800342F72 /* LPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LPlatform.h; path = Base/LPlatform.h; sourceTree = "<group>"; };
-		1C90C9C41CF63B5800342F72 /* LPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LPlatform.m; path = Base/LPlatform.m; sourceTree = "<group>"; };
-		1C90C9C61CF63C0700342F72 /* JPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JPlatform.h; path = Base/JPlatform.h; sourceTree = "<group>"; };
-		1C90C9C71CF63C0700342F72 /* JPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JPlatform.m; path = Base/JPlatform.m; sourceTree = "<group>"; };
-		1C90C9C91CF63C6E00342F72 /* SPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPlatform.h; path = Base/SPlatform.h; sourceTree = "<group>"; };
-		1C90C9CA1CF63C6E00342F72 /* SPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPlatform.m; path = Base/SPlatform.m; sourceTree = "<group>"; };
-		1C90C9CC1CF63D3900342F72 /* ZPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZPlatform.h; path = Base/ZPlatform.h; sourceTree = "<group>"; };
-		1C90C9CD1CF63D3900342F72 /* ZPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZPlatform.m; path = Base/ZPlatform.m; sourceTree = "<group>"; };
 		8007D8131CF60E8800FAA598 /* ShopPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopPageView.h; path = View/ShopPageView.h; sourceTree = "<group>"; };
 		8007D8141CF60E8800FAA598 /* ShopPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopPageView.m; path = View/ShopPageView.m; sourceTree = "<group>"; };
+		80D638D11CFCB95C003528B1 /* BaseShapeCollidableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseShapeCollidableObject.h; path = Base/BaseShapeCollidableObject.h; sourceTree = "<group>"; };
+		80D638D21CFCB95C003528B1 /* BaseShapeCollidableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseShapeCollidableObject.m; path = Base/BaseShapeCollidableObject.m; sourceTree = "<group>"; };
 		80F263201CF4C7DA00AECF8B /* LandingPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LandingPageView.h; path = View/LandingPageView.h; sourceTree = "<group>"; };
 		80F263211CF4C7DA00AECF8B /* LandingPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LandingPageView.m; path = View/LandingPageView.m; sourceTree = "<group>"; };
 		80F263241CF4CB3E00AECF8B /* ARCADE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ARCADE.TTF; path = Fonts/ARCADE.TTF; sourceTree = "<group>"; };
@@ -162,24 +144,12 @@
 				1C1D1DDE1CEFA23F007F63CF /* BaseSpriteObject.m */,
 				1C1D1DE31CEFA9B2007F63CF /* BaseCollidableObject.h */,
 				1C1D1DE41CEFA9B2007F63CF /* BaseCollidableObject.m */,
+				80D638D11CFCB95C003528B1 /* BaseShapeCollidableObject.h */,
+				80D638D21CFCB95C003528B1 /* BaseShapeCollidableObject.m */,
 				1C1D1DE01CEFA738007F63CF /* Ball.h */,
 				1C1D1DE11CEFA738007F63CF /* Ball.m */,
 				1C90C9B71CF637C000342F72 /* Platform.h */,
 				1C90C9B81CF637C000342F72 /* Platform.m */,
-				1C90C9BA1CF637DF00342F72 /* TPlatform.h */,
-				1C90C9BB1CF637DF00342F72 /* TPlatform.m */,
-				1C90C9BD1CF6397300342F72 /* OPlatform.h */,
-				1C90C9BE1CF6397300342F72 /* OPlatform.m */,
-				1C90C9C01CF63A4600342F72 /* IPlatform.h */,
-				1C90C9C11CF63A4600342F72 /* IPlatform.m */,
-				1C90C9C31CF63B5800342F72 /* LPlatform.h */,
-				1C90C9C41CF63B5800342F72 /* LPlatform.m */,
-				1C90C9C61CF63C0700342F72 /* JPlatform.h */,
-				1C90C9C71CF63C0700342F72 /* JPlatform.m */,
-				1C90C9C91CF63C6E00342F72 /* SPlatform.h */,
-				1C90C9CA1CF63C6E00342F72 /* SPlatform.m */,
-				1C90C9CC1CF63D3900342F72 /* ZPlatform.h */,
-				1C90C9CD1CF63D3900342F72 /* ZPlatform.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -283,27 +253,21 @@
 			files = (
 				1C90C9B31CF6149D00342F72 /* View.m in Sources */,
 				1C1D1DE51CEFA9B2007F63CF /* BaseCollidableObject.m in Sources */,
-				1C90C9CE1CF63D3900342F72 /* ZPlatform.m in Sources */,
 				1C90C9B91CF637C000342F72 /* Platform.m in Sources */,
 				1C3CB1751CF4E6030065DB93 /* BaseShapeObject.m in Sources */,
 				1C268F591CF7670900E409D3 /* ShapeContainer.m in Sources */,
 				80F263221CF4C7DA00AECF8B /* LandingPageView.m in Sources */,
-				1C90C9C21CF63A4600342F72 /* IPlatform.m in Sources */,
-				1C90C9CB1CF63C6E00342F72 /* SPlatform.m in Sources */,
 				8007D8151CF60E8800FAA598 /* ShopPageView.m in Sources */,
 				95D53A7E1CF8B02B005F03F0 /* ScorePageView.m in Sources */,
 				1C3CB1781CF4E65D0065DB93 /* ShapeBackground.m in Sources */,
 				1C1D1DCD1CEF9AF4007F63CF /* GameViewController.m in Sources */,
 				1C1D1DDF1CEFA23F007F63CF /* BaseSpriteObject.m in Sources */,
+				80D638D31CFCB95C003528B1 /* BaseShapeCollidableObject.m in Sources */,
 				1C1D1DE21CEFA738007F63CF /* Ball.m in Sources */,
-				1C90C9BF1CF6397300342F72 /* OPlatform.m in Sources */,
 				1C1D1DC51CEF9AF4007F63CF /* AppDelegate.m in Sources */,
-				1C90C9C51CF63B5800342F72 /* LPlatform.m in Sources */,
 				1C1D1DC81CEF9AF4007F63CF /* GameScene.m in Sources */,
 				1C1D1DC21CEF9AF4007F63CF /* main.m in Sources */,
-				1C90C9C81CF63C0700342F72 /* JPlatform.m in Sources */,
 				1C90C9B61CF6314900342F72 /* NewGameView.m in Sources */,
-				1C90C9BC1CF637DF00342F72 /* TPlatform.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

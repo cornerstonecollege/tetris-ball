@@ -7,11 +7,13 @@
 //
 
 #import "NewGameView.h"
-#import "OPlatform.h"
+#import "GameScene.h"
+#import "Platform.h"
 #import "Ball.h"
-#import "ScorePageView.h"
 
-@interface NewGameView () <SKPhysicsContactDelegate>
+@interface NewGameView () <SKPhysicsContactDelegate, GameSceneTimerDelegate>
+
+@property (nonatomic) BOOL isNotVertical;
 
 @end
 
@@ -47,32 +49,52 @@
 - (void)buildViewWithParent:(SKScene *)parent
 {
     self.parent = parent;
+    __weak NewGameView *weakSelf = self;
+    [((GameScene*)self.parent).timerDelegateArr addObject:weakSelf];
     parent.physicsWorld.contactDelegate = self;
+    
+    SKLabelNode *jumpLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    
+    jumpLabel.text = @"Jump";
+    jumpLabel.fontSize = 45;
+    jumpLabel.position = CGPointMake(parent.size.width - jumpLabel.frame.size.width / 2 - 30, 30);
+    jumpLabel.fontColor = [SKColor colorWithRed:1.0 green:0.31 blue:0.22 alpha:0.8];
+    
+    [self.parent addChild:jumpLabel];
+    
+    __weak SKLabelNode *weakJumpLabel = jumpLabel;
+    [self.arrObjects addObject:weakJumpLabel];
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
+    SKNode *node = [self.parent nodeAtPoint:location];
     static Ball *ball;
-    if (!ball)
+    if ([node isKindOfClass:[SKLabelNode class]])
     {
-        ball = [Ball ballDefaultWithParent:self.parent];
-        ball.xScale = 0.05;
-        ball.yScale = 0.05;
-        ball.position = CGPointMake(CGRectGetMidX(self.parent.frame),CGRectGetMidY(self.parent.frame) + 100);
+        SKLabelNode *label = (SKLabelNode*)node;
+        
+        if ([label.text isEqualToString:@"Jump"])
+        {
+            self.isNotVertical = YES;
+        }
     }
-    
-    
-    static Platform *platform;
-    if (!platform)
+    else
     {
-        platform = [[OPlatform alloc] initWithParent:self.parent];
-        platform.xScale = 0.067;
-        platform.yScale = 0.067;
-        platform.position = CGPointMake(CGRectGetMidX(self.parent.frame),CGRectGetMidY(self.parent.frame));
+        
+        ball = [Ball ballDefaultWithParent:self.parent andColor:[SKColor redColor]];
+        ball.position = CGPointMake(CGRectGetMidX(self.parent.frame) + ball.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
+        
+        static Platform *platform;
+        if (!platform)
+        {
+            platform = [Platform platformDefaultWithParent:self.parent andColor:[SKColor blueColor]];
+            platform.position = CGPointMake(CGRectGetMidX(self.parent.frame),CGRectGetMidY(self.parent.frame));
+        }
     }
 }
 
-- (void)didEndContact:(SKPhysicsContact *)contact
+- (void)didBeginContact:(SKPhysicsContact *)contact
 {
     SKPhysicsBody *ballBody = nil;
     ballBody = (contact.bodyA.categoryBitMask & BALL_MASK) != 0 ? contact.bodyA : ballBody;
@@ -92,16 +114,20 @@
 
 - (void) makeBallBounce:(Ball *)ball andRotatePlatform:(Platform *)platform
 {
-    static BOOL isRunning;
-    if (isRunning)
-        return;
-    
-    isRunning = YES;
-    
-    [ball bounce];
-    [platform rotateWithCompletion:^{
-        isRunning = NO;
-    }];
+    if (self.isNotVertical)
+    {
+        [ball bounceHorizontally];
+        self.isNotVertical = NO;
+    }
+    else
+    {
+        [ball bounce];
+    }
+}
+
+- (void) didUpdateTimerWithParentScene:(SKScene *)gameScene
+{
+    NSLog(@"dsdsdss");
 }
 
 @end

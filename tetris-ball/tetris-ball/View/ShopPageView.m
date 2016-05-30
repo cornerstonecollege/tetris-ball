@@ -67,9 +67,37 @@
     node.yScale = 0.1;
     node.color = [SKColor blackColor];
     node.colorBlendFactor = 0.4;
-    __unused ShapeContainer *container = [ShapeContainer containerDefaultWithParent:self.parent andNode:node];
     
-    container.position = CGPointMake(10, parent.frame.size.height - container.frame.size.height - 80);
+    ShapeContainer *container = [ShapeContainer containerDefaultWithParent:self.parent andNode:node];
+    container.position = CGPointMake(5, parent.frame.size.height - container.frame.size.height - 80);
+
+    //Second container
+    
+    SKSpriteNode *node2 = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Ball"];
+    node2.xScale = 0.1;
+    node2.yScale = 0.1;
+    node2.color = [SKColor blackColor];
+    node2.colorBlendFactor = 0.4;
+    
+    ShapeContainer *container2 = [ShapeContainer containerDefaultWithParent:self.parent andNode:node2];
+    container2.position = CGPointMake(145, parent.frame.size.height - container2.frame.size.height - 80);
+    
+    //Third container
+    
+    SKSpriteNode *node3 = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Ball"];
+    node3.xScale = 0.1;
+    node3.yScale = 0.1;
+    node3.color = [SKColor blackColor];
+    node3.colorBlendFactor = 0.4;
+    
+    ShapeContainer *container3 = [ShapeContainer containerDefaultWithParent:self.parent andNode:node3];
+    container3.position = CGPointMake(285, parent.frame.size.height - container3.frame.size.height - 80);
+    
+    __weak ShapeContainer *weakContainer1 = container;
+    __weak ShapeContainer *weakContainer2 = container2;
+    __weak ShapeContainer *weakContainer3 = container3;
+    
+    [self.arrObjects addObjectsFromArray:@[weakContainer1, weakContainer2, weakContainer3]];
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
