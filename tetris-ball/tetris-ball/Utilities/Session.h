@@ -15,5 +15,6 @@
 - (void) setMaxScore:(NSInteger)score;
 - (NSInteger) getMaxScore;
 - (void) playAudioWithFileName:(NSString *)audioName;
+- (void) stopAudio;
 
 @end
