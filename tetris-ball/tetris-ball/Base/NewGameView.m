@@ -125,11 +125,30 @@
 - (void) didUpdateTimerWithParentScene:(SKScene *)gameScene
 {
     int randomN = arc4random_uniform(2);
+    static NSInteger counter;
     
-    if (randomN)
+    counter = randomN == 0 ? counter + 1 : 0;
+    
+    if (randomN || counter > 1)
     {
+        counter = 0;
         Platform *platform1;
-        platform1 = [Platform platformDefaultWithParent:self.parent andColor:[SKColor blueColor]];
+        
+        SKColor *color = nil;
+        int colorN = arc4random_uniform(3);
+        switch(colorN)
+        {
+            case 0: color = [SKColor colorWithRed:1.0 green:0.31 blue:0.22 alpha:0.8];
+                break;
+            case 1: color = [SKColor colorWithRed:0.2 green:0.89 blue:0.43 alpha:0.8];
+                break;
+            case 2: color = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
+                break;
+            default:
+                break;
+            
+        }
+        platform1 = [Platform platformDefaultWithParent:self.parent andColor:color];
         platform1.position = CGPointMake(self.parent.size.width + platform1.frame.size.width,
                                          CGRectGetMidY(self.parent.frame));
         SKAction *movePlatform = [SKAction moveByX:-self.parent.frame.size.width - self.parent.frame.size.width/2 y:0 duration:0.03 * self.parent.size.width];
