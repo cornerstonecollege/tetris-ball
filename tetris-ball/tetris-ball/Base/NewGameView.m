@@ -68,6 +68,7 @@
     [((GameScene*)self.parent).timerDelegateArr addObject:weakSelf];
     parent.physicsWorld.contactDelegate = self;
     self.isGameOver = TRUE;
+    [[Session sharedInstance] playAudioWithFileName:@"background_three.mp3"];
     
     self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
     self.score = 0;
@@ -89,7 +90,7 @@
     trophyNode.yScale = 0.1;
     trophyNode.position = CGPointMake(CGRectGetMidX(parent.frame),parent.size.height - trophyNode.frame.size.height / 2 - 10);
     
-    [self.parent addChild:trophyNode];
+    [self.parent addChild:trophyNode];	
     
    /* __weak SKLabelNode *weakJumpLabel = jumpLabel;
     [self.arrObjects addObject:weakJumpLabel];*/

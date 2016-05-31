@@ -31,6 +31,8 @@
 		80F263221CF4C7DA00AECF8B /* LandingPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F263211CF4C7DA00AECF8B /* LandingPageView.m */; };
 		80F263251CF4CB3E00AECF8B /* ARCADE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 80F263241CF4CB3E00AECF8B /* ARCADE.TTF */; };
 		95D53A7E1CF8B02B005F03F0 /* ScorePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D53A7D1CF8B02B005F03F0 /* ScorePageView.m */; };
+		EF5BA2D31CFE1C9D0054C410 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5BA2D21CFE1C9D0054C410 /* AVFoundation.framework */; };
+		EF5BA2D51CFE21170054C410 /* background_three.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EF5BA2D41CFE21170054C410 /* background_three.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		80F263241CF4CB3E00AECF8B /* ARCADE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ARCADE.TTF; path = Fonts/ARCADE.TTF; sourceTree = "<group>"; };
 		95D53A7C1CF8B02B005F03F0 /* ScorePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScorePageView.h; path = View/ScorePageView.h; sourceTree = "<group>"; };
 		95D53A7D1CF8B02B005F03F0 /* ScorePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScorePageView.m; path = View/ScorePageView.m; sourceTree = "<group>"; };
+		EF5BA2D21CFE1C9D0054C410 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EF5BA2D41CFE21170054C410 /* background_three.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = background_three.mp3; path = songs/background_three.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF5BA2D31CFE1C9D0054C410 /* AVFoundation.framework in Frameworks */,
 				1C4E60311CFCD9FC00A44AFF /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +99,7 @@
 		1C1D1DB41CEF9AF4007F63CF = {
 			isa = PBXGroup;
 			children = (
+				EF5BA2D21CFE1C9D0054C410 /* AVFoundation.framework */,
 				1C4E60301CFCD9FC00A44AFF /* CoreMotion.framework */,
 				1C1D1DBF1CEF9AF4007F63CF /* tetris-ball */,
 				1C1D1DBE1CEF9AF4007F63CF /* Products */,
@@ -111,6 +117,7 @@
 		1C1D1DBF1CEF9AF4007F63CF /* tetris-ball */ = {
 			isa = PBXGroup;
 			children = (
+				EF5BA2CD1CFE19E00054C410 /* AudioEFX */,
 				1C4D0B1C1CFDF73900DFAD56 /* Utilities */,
 				80F263231CF4CB2200AECF8B /* Fonts */,
 				80F2631F1CF4C7A800AECF8B /* View */,
@@ -196,6 +203,14 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		EF5BA2CD1CFE19E00054C410 /* AudioEFX */ = {
+			isa = PBXGroup;
+			children = (
+				EF5BA2D41CFE21170054C410 /* background_three.mp3 */,
+			);
+			name = AudioEFX;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,6 +274,7 @@
 				1C1D1DD51CEF9AF4007F63CF /* LaunchScreen.storyboard in Resources */,
 				1C1D1DD21CEF9AF4007F63CF /* Assets.xcassets in Resources */,
 				1C1D1DD01CEF9AF4007F63CF /* Main.storyboard in Resources */,
+				EF5BA2D51CFE21170054C410 /* background_three.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

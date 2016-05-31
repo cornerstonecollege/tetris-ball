@@ -7,6 +7,15 @@
 //
 
 #import "Session.h"
+#import "AVFoundation/AVFoundation.h"
+
+@interface Session ()
+
+@property (nonatomic) AVAudioPlayer *audioPlayer;
+@property (nonatomic) NSString *lastAudio;
+
+@end
+
 
 @implementation Session
 
@@ -52,6 +61,32 @@
     if (!maxScore)
         return 0;
     return [maxScore integerValue];
+}
+
+-(void)playAudioWithFileName:(NSString *)audioName
+{
+    if ([self.audioPlayer isPlaying])
+    {
+        if (audioName == self.lastAudio)
+            return;
+        else
+            [self.audioPlayer stop];
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], audioName];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    
+    NSError *error;
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    self.audioPlayer.numberOfLoops = -1;
+    
+    if (!self.audioPlayer)
+        NSLog(@"%@", [error localizedDescription]);
+    else
+    {
+        [self.audioPlayer play];
+        self.lastAudio = audioName;
+    }
 }
 
 @end
