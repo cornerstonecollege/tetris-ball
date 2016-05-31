@@ -45,6 +45,14 @@
 
 - (void) initialize
 {
+    CGMutablePathRef pathToDraw = CGPathCreateMutable();
+    CGRect rect = CGRectMake(10, 40, 20, 5);
+    CGPathAddRect(pathToDraw, NULL, rect);
+    SKShapeNode *shapeNode = [SKShapeNode shapeNodeWithPath:pathToDraw];
+    
+    self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:shapeNode.path];
+    self.physicsBody.dynamic = NO;
+    self.physicsBody.collisionBitMask = 0;
     self.physicsBody.categoryBitMask = PLATFORM_MASK;
     self.physicsBody.contactTestBitMask = BALL_MASK;
     self.physicsBody.usesPreciseCollisionDetection = YES;
