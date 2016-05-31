@@ -13,16 +13,25 @@
 #import "Platform.h"
 #import "Ball.h"
 #import "ShapeBackground.h"
+#import "Session.h"
 
 @interface NewGameView () <SKPhysicsContactDelegate, GameSceneTimerDelegate>
 
 @property (nonatomic) CMMotionManager *motionManager;
 @property (nonatomic) BOOL isNotVertical;
 @property (nonatomic, weak) Ball *player;
+@property (nonatomic, weak) SKLabelNode *scoreLabel;
+@property (nonatomic) NSInteger score;
+@property (nonatomic, weak) SKLabelNode *highScoreLabel;
+@property (nonatomic) BOOL isGameOver;
 
 @end
 
 @implementation NewGameView
+
+#define RED_COLOR [SKColor colorWithRed:1.0 green:0.31 blue:0.22 alpha:0.8]
+#define BLUE_COLOR [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8]
+#define GREEN_COLOR [SKColor colorWithRed:0.2 green:0.89 blue:0.43 alpha:0.8]
 
 - (instancetype)init
 {
@@ -58,22 +67,37 @@
     __weak NewGameView *weakSelf = self;
     [((GameScene*)self.parent).timerDelegateArr addObject:weakSelf];
     parent.physicsWorld.contactDelegate = self;
+    self.isGameOver = TRUE;
     
-    SKLabelNode *jumpLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    self.score = 0;
+    self.scoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
+    self.scoreLabel.fontSize = 60;
+    self.scoreLabel.position = CGPointMake(CGRectGetMidX(parent.frame) * 0.5,parent.size.height - self.scoreLabel.frame.size.height - 30);
+    self.scoreLabel.fontColor = RED_COLOR;
+    [self.parent addChild:self.scoreLabel];
     
-    jumpLabel.text = @"Jump";
-    jumpLabel.fontSize = 45;
-    jumpLabel.position = CGPointMake(parent.size.width - jumpLabel.frame.size.width / 2 - 30, 30);
-    jumpLabel.fontColor = [SKColor colorWithRed:1.0 green:0.31 blue:0.22 alpha:0.8];
+    self.highScoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    self.highScoreLabel.text = [NSString stringWithFormat:@"%ld",[Session sharedInstance].getMaxScore];
+    self.highScoreLabel.fontSize = 60;
+    self.highScoreLabel.position = CGPointMake(CGRectGetMidX(parent.frame) * 1.5,parent.size.height - self.highScoreLabel.frame.size.height - 30);
+    self.highScoreLabel.fontColor = BLUE_COLOR;
+    [self.parent addChild:self.highScoreLabel];
     
-    [self.parent addChild:jumpLabel];
+    SKSpriteNode* trophyNode = [SKSpriteNode spriteNodeWithImageNamed:@"Trophy"];
+    trophyNode.xScale = 0.1;
+    trophyNode.yScale = 0.1;
+    trophyNode.position = CGPointMake(CGRectGetMidX(parent.frame),parent.size.height - trophyNode.frame.size.height / 2 - 10);
     
-    __weak SKLabelNode *weakJumpLabel = jumpLabel;
-    [self.arrObjects addObject:weakJumpLabel];
+    [self.parent addChild:trophyNode];
+    
+   /* __weak SKLabelNode *weakJumpLabel = jumpLabel;
+    [self.arrObjects addObject:weakJumpLabel];*/
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
+    self.isGameOver = FALSE;
     SKNode *node = [self.parent nodeAtPoint:location];
     if ([node isKindOfClass:[SKLabelNode class]])
     {
@@ -128,37 +152,55 @@
     static NSInteger counter;
     
     counter = randomN == 0 ? counter + 1 : 0;
+    Platform *platform1;
     
     if (randomN || counter > 1)
     {
         counter = 0;
-        Platform *platform1;
         
         SKColor *color = nil;
         int colorN = arc4random_uniform(3);
         switch(colorN)
         {
-            case 0: color = [SKColor colorWithRed:1.0 green:0.31 blue:0.22 alpha:0.8];
+            case 0: color = RED_COLOR;
                 break;
-            case 1: color = [SKColor colorWithRed:0.2 green:0.89 blue:0.43 alpha:0.8];
+            case 1: color = BLUE_COLOR;
                 break;
-            case 2: color = [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8];
+            case 2: color = GREEN_COLOR;
                 break;
             default:
                 break;
             
         }
         platform1 = [Platform platformDefaultWithParent:self.parent andColor:color];
-        platform1.position = CGPointMake(self.parent.size.width + platform1.frame.size.width,
+        platform1.position = CGPointMake(self.parent.size.width,
                                          CGRectGetMidY(self.parent.frame));
-        SKAction *movePlatform = [SKAction moveByX:-self.parent.frame.size.width - self.parent.frame.size.width/2 y:0 duration:0.03 * self.parent.size.width];
+        SKAction *movePlatform = [SKAction moveTo:CGPointMake(-platform1.frame.size.width, platform1.frame.origin.y) duration:0.025 * self.parent.frame.size.width];
     
         [platform1 runAction:movePlatform completion:^{
             [platform1 removeFromParent];
+            if (!self.isGameOver) {
+                self.scoreLabel.text = [NSString stringWithFormat:@"%ld",++self.score];
+            }
         }];
     }
     
     [ShapeBackground moveBackgroundsWithParent:(GameScene *)gameScene];
+    if (platform1 && self.player.position.y < platform1.position.y)
+    {
+        [self doGameOver];
+    }
+}
+
+- (void) doGameOver
+{
+    self.isGameOver = TRUE;
+    if ([Session sharedInstance].getMaxScore < self.score) {
+        [[Session sharedInstance] setMaxScore:self.score];
+        self.highScoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
+    }
+    self.score = 0;
+    self.scoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
 }
 
 - (void) initializeGyroscope
