@@ -134,7 +134,7 @@
     }
     else
     {
-        self.player = [Ball ballDefaultWithParent:self.parent andColor:[SKColor redColor]];
+        self.player = [Ball ballDefaultWithParent:self.parent andColor:RED_COLOR];
         self.player.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
     }
 }
@@ -166,13 +166,21 @@
     
     if (ballBody && platformBody)
     {
-        [self makeBallBounce:(Ball *)ballBody.node andRotatePlatform:(Platform *)platformBody.node.parent];
+        Ball *ball = (Ball *)ballBody.node;
+        Platform *platform = (Platform *)platformBody.node;
+        if ([ball.fillColor isEqual:platform.fillColor])
+        {
+            [self makeBallBounce: ball];
+        }
+        else
+        {
+            [self doGameOver];
+        }
     }
-    
     // otherwise do nothing
 }
 
-- (void) makeBallBounce:(Ball *)ball andRotatePlatform:(Platform *)platform
+- (void) makeBallBounce:(Ball *)ball
 {
     if (self.isNotVertical)
     {
