@@ -42,6 +42,16 @@
     return playerDefault;
 }
 
++ (instancetype) ballDefaultWithParent:(SKScene *)parent color:(SKColor *)color andRadius:(CGFloat)radius
+{
+    CGMutablePathRef pathToDraw = CGPathCreateMutable();
+    CGPathAddArc(pathToDraw, NULL, 0,0, radius, 0, M_PI*2, YES);
+    Ball *playerDefault = [[Ball alloc] initWithPath:pathToDraw andParent:parent];
+    playerDefault.fillColor = color;
+    
+    return playerDefault;
+}
+
 - (void) initialize
 {
     self.physicsBody.categoryBitMask = BALL_MASK;
@@ -67,6 +77,26 @@
 {
     self.physicsBody.velocity = CGVectorMake(0.0, 0.0);
     [self.physicsBody applyImpulse:CGVectorMake(5.0, 10.0)];
+}
+
+- (void) makeExplosion
+{
+    for (int i = 0; i < 10; i++)
+    {
+        int numberX = arc4random_uniform(1000);
+        int numberY = arc4random_uniform(1000);
+        int isNegativeX = arc4random_uniform(2);
+        int isNegativeY = arc4random_uniform(2);
+        
+        Ball *ball = [Ball ballDefaultWithParent:(SKScene *)self.parent color:self.fillColor andRadius:5];
+        ball.position = self.position;
+        ball.physicsBody = nil;
+        [ball moveTo:CGPointMake(isNegativeX ? - numberX : numberX, isNegativeY ? - numberY : numberY) duration:0.7 andCompletion:^{
+            [ball removeFromParent];
+        }];
+    }
+    
+    [self removeFromParent];
 }
 
 @end

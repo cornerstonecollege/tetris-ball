@@ -16,5 +16,6 @@
 - (void) bounce;
 - (void) applyAccelerometerForce:(double)forceX;
 - (void) bounceHorizontally;
+- (void) makeExplosion;
 
 @end

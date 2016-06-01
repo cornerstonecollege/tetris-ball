@@ -174,6 +174,7 @@
         }
         else
         {
+            [self.player makeExplosion];
             [self doGameOver];
         }
     }
