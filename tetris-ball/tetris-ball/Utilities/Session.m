@@ -46,6 +46,24 @@
     return sessionPage;
 }
 
+- (void) setAudioPreference:(BOOL)audio
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSNumber numberWithBool:audio]
+                     forKey:@"isAudioOn"];
+    [userDefaults synchronize];
+}
+
+- (BOOL) getAudioPreference
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *isAudioOn = [userDefaults objectForKey:@"isAudioOn"];
+    if (!isAudioOn)
+        return true;
+    return [isAudioOn boolValue];
+}
+
+
 - (void) setMaxScore:(NSInteger)score
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

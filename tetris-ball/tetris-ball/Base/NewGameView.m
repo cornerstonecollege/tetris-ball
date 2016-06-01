@@ -24,6 +24,8 @@
 @property (nonatomic) NSInteger score;
 @property (nonatomic, weak) SKLabelNode *highScoreLabel;
 @property (nonatomic) BOOL isGameOver;
+@property (nonatomic, weak) SKSpriteNode *audioNode;
+
 
 @end
 
@@ -68,7 +70,6 @@
     [((GameScene*)self.parent).timerDelegateArr addObject:weakSelf];
     parent.physicsWorld.contactDelegate = self;
     self.isGameOver = TRUE;
-    [[Session sharedInstance] playAudioWithFileName:@"background_three.mp3"];
     
     self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
     self.score = 0;
@@ -90,7 +91,23 @@
     trophyNode.yScale = 0.1;
     trophyNode.position = CGPointMake(CGRectGetMidX(parent.frame),parent.size.height - trophyNode.frame.size.height / 2 - 10);
     
-    [self.parent addChild:trophyNode];	
+    [self.parent addChild:trophyNode];
+    
+    if ([Session sharedInstance].getAudioPreference)
+    {
+        self.audioNode = [SKSpriteNode spriteNodeWithImageNamed:@"AudioOn"];
+        [[Session sharedInstance] playAudioWithFileName:@"background_three.mp3"];
+    }
+    else
+    {
+        self.audioNode = [SKSpriteNode spriteNodeWithImageNamed:@"AudioOff"];
+    }
+    
+    self.audioNode.xScale = 0.1;
+    self.audioNode.yScale = 0.1;
+    self.audioNode.position = CGPointMake(50.0, 50.0);
+    
+     [self.parent addChild:self.audioNode];
     
    /* __weak SKLabelNode *weakJumpLabel = jumpLabel;
     [self.arrObjects addObject:weakJumpLabel];*/
@@ -109,11 +126,32 @@
             self.isNotVertical = YES;
         }
     }
+    else if (node == self.audioNode)
+    {
+        BOOL isAudioEnabled = [Session sharedInstance].getAudioPreference;
+        [[Session sharedInstance] setAudioPreference:!isAudioEnabled];
+        [self setAudioNode];
+    }
     else
     {
         self.player = [Ball ballDefaultWithParent:self.parent andColor:[SKColor redColor]];
         self.player.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
     }
+}
+
+- (void)setAudioNode
+{
+    if ([Session sharedInstance].getAudioPreference)
+    {
+        self.audioNode.texture = [SKTexture textureWithImageNamed:@"AudioOn"];
+        [[Session sharedInstance] playAudioWithFileName:@"background_three.mp3"];
+    }
+    else
+    {
+        self.audioNode.texture = [SKTexture textureWithImageNamed:@"AudioOff"];
+        [[Session sharedInstance] stopAudio];
+    }
+ 
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
