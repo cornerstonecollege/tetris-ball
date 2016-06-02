@@ -125,12 +125,6 @@
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
-    if (!self.isGameOver)
-    {
-        return;
-    }
-    
-    self.isGameOver = FALSE;
     [self.tapNode removeFromParent];
     SKNode *node = [self.parent nodeAtPoint:location];
     if (node == self.audioNode)
@@ -139,10 +133,14 @@
         [[Session sharedInstance] setAudioPreference:!isAudioEnabled];
         [self setAudioNode];
     }
-    else
+
+    if (!self.isGameOver)
     {
-        self.player.physicsBody.dynamic = YES;
+        return;
     }
+    
+    self.isGameOver = FALSE;
+    self.player.physicsBody.dynamic = YES;
 }
 
 - (void)setAudioNode
@@ -190,10 +188,12 @@
     }
     else if (ballBody && starBody)
     {
-        Ball *ball = (Ball *) ballBody.node;
-        Stars *star = (Stars *) starBody.node;
-        ball.fillColor = star.fillColor;
-        [star removeFromParent];
+        {
+            Ball *ball = (Ball *) ballBody.node;
+            Stars *star = (Stars *) starBody.node;
+            ball.fillColor = star.fillColor;
+            [star removeFromParent];
+        }
     }
     // otherwise do nothing
 }
