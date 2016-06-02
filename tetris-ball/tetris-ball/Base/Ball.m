@@ -110,8 +110,6 @@
     }
     
     [self removeFromParent];
-    
-    
 }
 
 @end

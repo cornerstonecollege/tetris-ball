@@ -125,6 +125,11 @@
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
+    if (!self.isGameOver)
+    {
+        return;
+    }
+    
     self.isGameOver = FALSE;
     [self.tapNode removeFromParent];
     SKNode *node = [self.parent nodeAtPoint:location];
@@ -136,8 +141,7 @@
     }
     else
     {
-        self.player = [Ball ballDefaultWithParent:self.parent andColor:RED_COLOR];
-        self.player.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
+        self.player.physicsBody.dynamic = YES;
     }
 }
 
@@ -269,6 +273,12 @@
 - (void) doGameOver
 {
     self.isGameOver = TRUE;
+    [self.player removeFromParent];
+    
+    self.player = [Ball ballDefaultWithParent:self.parent andColor:RED_COLOR];
+    self.player.physicsBody.dynamic = NO;
+    self.player.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 150);
+
     if ([Session sharedInstance].getMaxScore < self.score) {
         [[Session sharedInstance] setMaxScore:self.score];
         self.highScoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
