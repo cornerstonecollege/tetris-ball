@@ -12,5 +12,6 @@
 
 #define BALL_MASK 0x1 << 0
 #define PLATFORM_MASK 0x1 << 1
+#define STAR_MASK 0x1 << 2
 
 @end

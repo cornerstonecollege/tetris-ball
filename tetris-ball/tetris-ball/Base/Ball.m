@@ -55,7 +55,7 @@
 - (void) initialize
 {
     self.physicsBody.categoryBitMask = BALL_MASK;
-    self.physicsBody.collisionBitMask = PLATFORM_MASK;
+    self.physicsBody.collisionBitMask = PLATFORM_MASK | STAR_MASK;
     self.physicsBody.usesPreciseCollisionDetection = YES;
     self.physicsBody.dynamic = YES;
     self.physicsBody.mass = 0.02;

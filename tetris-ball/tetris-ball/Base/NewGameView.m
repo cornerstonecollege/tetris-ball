@@ -14,6 +14,7 @@
 #import "Ball.h"
 #import "ShapeBackground.h"
 #import "Session.h"
+#import "Stars.h"
 
 @interface NewGameView () <SKPhysicsContactDelegate, GameSceneTimerDelegate>
 
@@ -136,6 +137,10 @@
     {
         self.player = [Ball ballDefaultWithParent:self.parent andColor:RED_COLOR];
         self.player.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
+        
+        Stars *star = [Stars starDefaultWithParent:self.parent andColor:BLUE_COLOR];
+        star.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 30);
+
     }
 }
 
@@ -164,6 +169,10 @@
     platformBody = (contact.bodyA.categoryBitMask & PLATFORM_MASK) != 0 ? contact.bodyA : platformBody;
     platformBody = (contact.bodyB.categoryBitMask & PLATFORM_MASK) != 0 ? contact.bodyB : platformBody;
     
+    SKPhysicsBody *starBody = nil;
+    starBody = (contact.bodyA.categoryBitMask & STAR_MASK) != 0 ? contact.bodyA : starBody;
+    starBody = (contact.bodyB.categoryBitMask & STAR_MASK) != 0 ? contact.bodyB : starBody;
+    
     if (ballBody && platformBody)
     {
         Ball *ball = (Ball *)ballBody.node;
@@ -177,6 +186,11 @@
             [self.player makeExplosion];
             [self doGameOver];
         }
+    }
+    else if (ballBody && starBody)
+    {
+        // ball touched star
+        NSLog(@"Touched star");
     }
     // otherwise do nothing
 }
