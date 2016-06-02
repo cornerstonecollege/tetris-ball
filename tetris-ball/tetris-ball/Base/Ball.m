@@ -103,14 +103,15 @@
             [ball removeFromParent];
         }];
     }
-    
-    [self removeFromParent];
-    
     if ([Session sharedInstance].getAudioPreference)
     {
         SKAction *sound = [SKAction playSoundFileNamed:@"ball_die_sound.mp3" waitForCompletion:NO];
         [self.parent runAction:sound];
     }
+    
+    [self removeFromParent];
+    
+    
 }
 
 @end
