@@ -23,6 +23,7 @@
 		1C3CB1781CF4E65D0065DB93 /* ShapeBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3CB1771CF4E65D0065DB93 /* ShapeBackground.m */; };
 		1C4D0B1F1CFDF78B00DFAD56 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4D0B1E1CFDF78B00DFAD56 /* Session.m */; };
 		1C4E60311CFCD9FC00A44AFF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4E60301CFCD9FC00A44AFF /* CoreMotion.framework */; };
+		1C8927171D009C2900D753D9 /* Stars.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8927161D009C2900D753D9 /* Stars.m */; };
 		1C90C9B31CF6149D00342F72 /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9B21CF6149D00342F72 /* View.m */; };
 		1C90C9B61CF6314900342F72 /* NewGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9B51CF6314900342F72 /* NewGameView.m */; };
 		1C90C9B91CF637C000342F72 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C90C9B81CF637C000342F72 /* Platform.m */; };
@@ -64,6 +65,8 @@
 		1C4D0B1D1CFDF78B00DFAD56 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Session.h; path = Utilities/Session.h; sourceTree = "<group>"; };
 		1C4D0B1E1CFDF78B00DFAD56 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Session.m; path = Utilities/Session.m; sourceTree = "<group>"; };
 		1C4E60301CFCD9FC00A44AFF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		1C8927151D009C2900D753D9 /* Stars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stars.h; path = Base/Stars.h; sourceTree = "<group>"; };
+		1C8927161D009C2900D753D9 /* Stars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stars.m; path = Base/Stars.m; sourceTree = "<group>"; };
 		1C90C9B11CF6149D00342F72 /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = View.h; path = View/View.h; sourceTree = "<group>"; };
 		1C90C9B21CF6149D00342F72 /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = View.m; path = View/View.m; sourceTree = "<group>"; };
 		1C90C9B41CF6314900342F72 /* NewGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewGameView.h; path = Base/NewGameView.h; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				1C1D1DE11CEFA738007F63CF /* Ball.m */,
 				1C90C9B71CF637C000342F72 /* Platform.h */,
 				1C90C9B81CF637C000342F72 /* Platform.m */,
+				1C8927151D009C2900D753D9 /* Stars.h */,
+				1C8927161D009C2900D753D9 /* Stars.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				1C90C9B31CF6149D00342F72 /* View.m in Sources */,
 				1C1D1DE51CEFA9B2007F63CF /* BaseCollidableObject.m in Sources */,
 				1C90C9B91CF637C000342F72 /* Platform.m in Sources */,
+				1C8927171D009C2900D753D9 /* Stars.m in Sources */,
 				1C3CB1751CF4E6030065DB93 /* BaseShapeObject.m in Sources */,
 				1C268F591CF7670900E409D3 /* ShapeContainer.m in Sources */,
 				80F263221CF4C7DA00AECF8B /* LandingPageView.m in Sources */,
