@@ -187,8 +187,10 @@
     }
     else if (ballBody && starBody)
     {
-        // ball touched star
-        NSLog(@"Touched star");
+        Ball *ball = (Ball *) ballBody.node;
+        Stars *star = (Stars *) starBody.node;
+        ball.fillColor = star.fillColor;
+        [star removeFromParent];
     }
     // otherwise do nothing
 }
@@ -243,6 +245,18 @@
                 self.scoreLabel.text = [NSString stringWithFormat:@"%ld",++self.score];
             }
         }];
+        
+        int starN = arc4random_uniform(3);
+        if(starN == 1)
+        {
+            Stars *star = [Stars starDefaultWithParent:self.parent andColor:color];
+            int starHeight = arc4random_uniform(30);
+            star.position = CGPointMake(self.parent.size.width, CGRectGetMidY(self.parent.frame)+30+starHeight);
+            SKAction *moveStar = [SKAction moveToX:-star.frame.size.width duration:0.015 * self.parent.frame.size.width];
+            [star runAction:moveStar completion:^{
+                [star removeFromParent];
+            }];
+        }
     }
     
     [ShapeBackground moveBackgroundsWithParent:(GameScene *)gameScene];
