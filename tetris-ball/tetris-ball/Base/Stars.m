@@ -43,13 +43,9 @@
     self.physicsBody.categoryBitMask = STAR_MASK;
     self.physicsBody.contactTestBitMask = BALL_MASK;
     self.physicsBody.usesPreciseCollisionDetection = YES;
-    
-    SKAction *action1 = [SKAction moveByX:0 y:-30 duration:0.7];
-    SKAction *action2 = [SKAction moveByX:0 y:30 duration:0.7];
-    SKAction *actionRotation = [SKAction repeatActionForever:[SKAction sequence:@[action1, action2]]];
-    SKAction *fadeOut = [SKAction fadeAlphaTo:0.0 duration:0.7];
-    SKAction *fadeIn = [SKAction fadeAlphaTo:1.0 duration:0.7];
-    [self runAction:actionRotation];
+
+    SKAction *fadeOut = [SKAction fadeAlphaTo:0.0 duration:1];
+    SKAction *fadeIn = [SKAction fadeAlphaTo:1.0 duration:1];
     SKAction *fadeRotation = [SKAction repeatActionForever:[SKAction sequence:@[fadeOut, fadeIn]]];
     [self runAction:fadeRotation];
 }

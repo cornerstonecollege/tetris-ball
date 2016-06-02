@@ -26,7 +26,7 @@
 @property (nonatomic, weak) SKLabelNode *highScoreLabel;
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic, weak) SKSpriteNode *audioNode;
-
+@property (nonatomic, weak) SKSpriteNode *tapNode;
 
 @end
 
@@ -64,13 +64,18 @@
     return newGamePage;
 }
 
+- (void)didGameStart
+{
+
+    
+}
+
 - (void)buildViewWithParent:(SKScene *)parent
 {
     self.parent = parent;
     __weak NewGameView *weakSelf = self;
     [((GameScene*)self.parent).timerDelegateArr addObject:weakSelf];
     parent.physicsWorld.contactDelegate = self;
-    self.isGameOver = TRUE;
     
     self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
     self.score = 0;
@@ -94,6 +99,8 @@
     
     [self.parent addChild:trophyNode];
     
+    [self doGameOver];
+    
     if ([Session sharedInstance].getAudioPreference)
     {
         self.audioNode = [SKSpriteNode spriteNodeWithImageNamed:@"AudioOn"];
@@ -110,24 +117,18 @@
     
      [self.parent addChild:self.audioNode];
     
-   /* __weak SKLabelNode *weakJumpLabel = jumpLabel;
-    [self.arrObjects addObject:weakJumpLabel];*/
+    
+    
+   /* __weak SKSpriteNode *weakTap = tap;
+    [self.arrObjects addObject:weakTap];*/
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
     self.isGameOver = FALSE;
+    [self.tapNode removeFromParent];
     SKNode *node = [self.parent nodeAtPoint:location];
-    if ([node isKindOfClass:[SKLabelNode class]])
-    {
-        SKLabelNode *label = (SKLabelNode*)node;
-        
-        if ([label.text isEqualToString:@"Jump"])
-        {
-            self.isNotVertical = YES;
-        }
-    }
-    else if (node == self.audioNode)
+    if (node == self.audioNode)
     {
         BOOL isAudioEnabled = [Session sharedInstance].getAudioPreference;
         [[Session sharedInstance] setAudioPreference:!isAudioEnabled];
@@ -135,6 +136,7 @@
     }
     else
     {
+        
         self.player = [Ball ballDefaultWithParent:self.parent andColor:RED_COLOR];
         self.player.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
     }
@@ -185,8 +187,10 @@
     }
     else if (ballBody && starBody)
     {
-        // ball touched star
-        NSLog(@"Touched star");
+        Ball *ball = (Ball *) ballBody.node;
+        Stars *star = (Stars *) starBody.node;
+        ball.fillColor = star.fillColor;
+        [star removeFromParent];
     }
     // otherwise do nothing
 }
@@ -242,6 +246,18 @@
                 self.scoreLabel.text = [NSString stringWithFormat:@"%ld",++self.score];
             }
         }];
+        
+        int starN = arc4random_uniform(3);
+        if(starN == 1)
+        {
+            Stars *star = [Stars starDefaultWithParent:self.parent andColor:color];
+            int starHeight = arc4random_uniform(30);
+            star.position = CGPointMake(self.parent.size.width, CGRectGetMidY(self.parent.frame)+30+starHeight);
+            SKAction *moveStar = [SKAction moveToX:-star.frame.size.width duration:0.015 * self.parent.frame.size.width];
+            [star runAction:moveStar completion:^{
+                [star removeFromParent];
+            }];
+        }
     }
     
     [ShapeBackground moveBackgroundsWithParent:(GameScene *)gameScene];
@@ -259,7 +275,21 @@
         self.highScoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
     }
     self.score = 0;
-    self.scoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
+    
+    if (self.scoreLabel)
+        self.scoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
+    
+    if (!self.tapNode)
+    {
+        SKSpriteNode *tapNode = [SKSpriteNode spriteNodeWithImageNamed:@"Tap"];
+        self.tapNode = tapNode;
+        self.tapNode.xScale = 0.3;
+        self.tapNode.yScale = 0.3;
+        self.tapNode.position = CGPointMake(CGRectGetMidX(self.parent.frame),220);
+        
+        [self.parent addChild:self.tapNode];
+    }
+
 }
 
 - (void) initializeGyroscope
