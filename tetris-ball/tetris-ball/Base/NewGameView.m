@@ -137,10 +137,6 @@
     {
         self.player = [Ball ballDefaultWithParent:self.parent andColor:RED_COLOR];
         self.player.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 100);
-        
-        Stars *star = [Stars starDefaultWithParent:self.parent andColor:BLUE_COLOR];
-        star.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 30);
-
     }
 }
 
