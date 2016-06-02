@@ -202,6 +202,7 @@
     {
         [ball bounce];
     }
+    
 }
 
 - (void) didUpdateTimerWithParentScene:(SKScene *)gameScene

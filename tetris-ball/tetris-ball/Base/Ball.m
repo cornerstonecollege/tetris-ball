@@ -7,6 +7,7 @@
 //
 
 #import "Ball.h"
+#import "Session.h"
 
 @implementation Ball
 
@@ -71,6 +72,13 @@
 {
     self.physicsBody.velocity = CGVectorMake(0.0, 0.0);
     [self.physicsBody applyImpulse:CGVectorMake(0.0, 15.0)];
+    
+    if ([Session sharedInstance].getAudioPreference)
+    {
+        SKAction *sound = [SKAction playSoundFileNamed:@"jump_sound.mp3" waitForCompletion:NO];
+        [self.parent runAction:sound];
+    }
+
 }
 
 - (void) bounceHorizontally
@@ -97,6 +105,12 @@
     }
     
     [self removeFromParent];
+    
+    if ([Session sharedInstance].getAudioPreference)
+    {
+        SKAction *sound = [SKAction playSoundFileNamed:@"ball_die_sound.mp3" waitForCompletion:NO];
+        [self.parent runAction:sound];
+    }
 }
 
 @end
