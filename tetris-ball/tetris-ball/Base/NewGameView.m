@@ -255,7 +255,7 @@
         [platform1 runAction:movePlatform completion:^{
             [platform1 removeFromParent];
             if (!self.isGameOver) {
-                self.scoreLabel.text = [NSString stringWithFormat:@"%ld",++self.score];
+                self.scoreLabel.text = [NSString stringWithFormat:@"%d",++self.score];
             }
         }];
         
