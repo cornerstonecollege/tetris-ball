@@ -25,9 +25,10 @@
 @property (nonatomic) NSInteger score;
 @property (nonatomic, weak) SKLabelNode *highScoreLabel;
 @property (nonatomic) BOOL isGameOver;
-@property (nonatomic, weak) SKSpriteNode *audioNode;
+@property (nonatomic) SKSpriteNode *audioNode;
 @property (nonatomic, weak) SKSpriteNode *tapNode;
 @property (nonatomic, weak) SKSpriteNode *tiltNode;
+@property (nonatomic) SKSpriteNode *infoNode;
 
 @end
 
@@ -110,12 +111,14 @@
     self.audioNode.yScale = 0.1;
     self.audioNode.position = CGPointMake(50.0, 50.0);
     
-     [self.parent addChild:self.audioNode];
+    [self.parent addChild:self.audioNode];
     
+    self.infoNode = [SKSpriteNode spriteNodeWithImageNamed:@"InformationIcon"];
+    self.infoNode.xScale = 0.1;
+    self.infoNode.yScale = 0.1;
+    self.infoNode.position = CGPointMake(parent.frame.size.width - 50, 50.0);
     
-    
-   /* __weak SKSpriteNode *weakTap = tap;
-    [self.arrObjects addObject:weakTap];*/
+    [self.parent addChild:self.infoNode];
 }
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
@@ -163,7 +166,6 @@
         self.audioNode.texture = [SKTexture textureWithImageNamed:@"AudioOff"];
         [[Session sharedInstance] stopAudio];
     }
- 
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
@@ -217,7 +219,6 @@
     {
         [ball bounce];
     }
-    
 }
 
 - (void) didUpdateTimerWithParentScene:(SKScene *)gameScene
