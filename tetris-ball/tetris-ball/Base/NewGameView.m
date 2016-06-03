@@ -29,6 +29,7 @@
 @property (nonatomic, weak) SKSpriteNode *tapNode;
 @property (nonatomic, weak) SKSpriteNode *tiltNode;
 @property (nonatomic) SKSpriteNode *infoNode;
+@property (nonatomic) NSArray<SKNode *> *creditsNodeArr;
 
 @end
 
@@ -37,6 +38,7 @@
 #define RED_COLOR [SKColor colorWithRed:1.0 green:0.31 blue:0.22 alpha:0.8]
 #define BLUE_COLOR [SKColor colorWithRed:0.2 green:0.65 blue:0.89 alpha:0.8]
 #define GREEN_COLOR [SKColor colorWithRed:0.2 green:0.89 blue:0.43 alpha:0.8]
+#define BLACK_COLOR [SKColor colorWithRed:0 green:0 blue:0 alpha:0.8]
 
 - (instancetype)init
 {
@@ -123,12 +125,26 @@
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
+    if (self.creditsNodeArr && self.creditsNodeArr.count > 0)
+    {
+        [self.creditsNodeArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj removeFromParent];
+        }];
+        self.creditsNodeArr = nil;
+        return;
+    }
+    
     SKNode *node = [self.parent nodeAtPoint:location];
     if (node == self.audioNode)
     {
         BOOL isAudioEnabled = [Session sharedInstance].getAudioPreference;
         [[Session sharedInstance] setAudioPreference:!isAudioEnabled];
         [self setAudioNode];
+    }
+    else if (node == self.infoNode)
+    {
+        [self createInfo];
+        return;
     }
 
     if (!self.isGameOver)
@@ -152,6 +168,73 @@
     
     self.isGameOver = FALSE;
     self.player.physicsBody.dynamic = YES;
+}
+
+- (void)createInfo
+{
+    SKSpriteNode *creditsNode = [SKSpriteNode spriteNodeWithColor:BLACK_COLOR size:self.parent.frame.size];
+    creditsNode.position = CGPointMake(CGRectGetMidX(self.parent.frame), CGRectGetMidY(self.parent.frame));
+    creditsNode.zPosition = 10;
+    
+    SKLabelNode *createdBy = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    createdBy.text = @"Created By";
+    createdBy.fontSize = 40;
+    createdBy.zPosition = 11;
+    createdBy.fontColor = [SKColor whiteColor];
+    createdBy.position = CGPointMake(CGRectGetMidX(creditsNode.frame), CGRectGetMidY(creditsNode.frame) +100);
+    [self.parent addChild:createdBy];
+    
+    SKLabelNode *nameLuizPeres = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    nameLuizPeres.text = @"Luiz Peres";
+    nameLuizPeres.fontSize = 25;
+    nameLuizPeres.zPosition = 11;
+    nameLuizPeres.fontColor = [SKColor whiteColor];
+    nameLuizPeres.position = CGPointMake(CGRectGetMidX(creditsNode.frame), CGRectGetMidY(creditsNode.frame) +50);
+    [self.parent addChild:nameLuizPeres];
+    
+    SKLabelNode *nameDennisPham = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    nameDennisPham.text = @"Dennis Pham";
+    nameDennisPham.fontSize = 25;
+    nameDennisPham.zPosition = 11;
+    nameDennisPham.fontColor = [SKColor whiteColor];
+    nameDennisPham.position = CGPointMake(CGRectGetMidX(creditsNode.frame), CGRectGetMidY(creditsNode.frame) +25);
+    [self.parent addChild:nameDennisPham];
+    
+    SKLabelNode *nameDigbyAndrews = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    nameDigbyAndrews.text = @"Digby Andrews";
+    nameDigbyAndrews.fontSize = 25;
+    nameDigbyAndrews.zPosition = 11;
+    nameDigbyAndrews.fontColor = [SKColor whiteColor];
+    nameDigbyAndrews.position = CGPointMake(CGRectGetMidX(creditsNode.frame), CGRectGetMidY(creditsNode.frame));
+    [self.parent addChild:nameDigbyAndrews];
+    
+    SKLabelNode *copyright = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    copyright.text = @"Copyright @ 2016 CICCC";
+    copyright.fontSize = 20;
+    copyright.zPosition = 11;
+    copyright.fontColor = [SKColor whiteColor];
+    copyright.position = CGPointMake(CGRectGetMidX(creditsNode.frame), CGRectGetMidY(creditsNode.frame) -170);
+    [self.parent addChild:copyright];
+    
+    SKLabelNode *rightsReserved = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
+    rightsReserved.text = @"All rights reserved";
+    rightsReserved.fontSize = 20;
+    rightsReserved.zPosition = 11;
+    rightsReserved.fontColor = [SKColor whiteColor];
+    rightsReserved.position = CGPointMake(CGRectGetMidX(creditsNode.frame), CGRectGetMidY(creditsNode.frame) -185);
+    [self.parent addChild:rightsReserved];
+    
+    [self.parent addChild:creditsNode];
+    
+    __weak SKNode* weakCreditsNode = creditsNode;
+    __weak SKNode* weakCreatedBy = createdBy;
+    __weak SKNode* weakNameLuizPeres = nameLuizPeres;
+    __weak SKNode* weakNameDennisPham = nameDennisPham;
+    __weak SKNode* weakNameDigbyAndrews = nameDigbyAndrews;
+    __weak SKNode* weakCopyright = copyright;
+    __weak SKNode* weakRightsReserved = rightsReserved;
+    
+    self.creditsNodeArr = @[weakCreditsNode, weakCreatedBy, weakNameLuizPeres, weakNameDennisPham, weakNameDigbyAndrews,weakCopyright, weakRightsReserved];
 }
 
 - (void)setAudioNode
