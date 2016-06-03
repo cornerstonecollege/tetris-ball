@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic, weak) SKSpriteNode *audioNode;
 @property (nonatomic, weak) SKSpriteNode *tapNode;
+@property (nonatomic, weak) SKSpriteNode *tiltNode;
 
 @end
 
@@ -62,12 +63,6 @@
     }
     
     return newGamePage;
-}
-
-- (void)didGameStart
-{
-
-    
 }
 
 - (void)buildViewWithParent:(SKScene *)parent
@@ -125,7 +120,6 @@
 
 - (void)viewClickReceivedWithLocation:(CGPoint)location
 {
-    [self.tapNode removeFromParent];
     SKNode *node = [self.parent nodeAtPoint:location];
     if (node == self.audioNode)
     {
@@ -137,6 +131,20 @@
     if (!self.isGameOver)
     {
         return;
+    }
+    
+    if (self.tapNode)
+    {
+        self.tapNode.texture = [SKTexture textureWithImageNamed:@"Phone"];
+        self.tapNode.xScale = 0.25;
+        SKAction *waitAction = [SKAction waitForDuration:0.4];
+        SKAction *fistAction = [SKAction rotateByAngle:- M_PI_2 / 2 duration:0.2];
+        SKAction *secondAction = [SKAction rotateByAngle:M_PI_2 duration:0.4];
+        SKAction *thirdAction = [SKAction rotateByAngle:- M_PI_2 duration:0.4];
+        SKAction *sequenceAction = [SKAction sequence:@[waitAction, fistAction, secondAction, thirdAction]];
+        [self.tapNode runAction: sequenceAction completion:^{
+            [self.tapNode removeFromParent];
+        }];
     }
     
     self.isGameOver = FALSE;
