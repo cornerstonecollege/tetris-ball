@@ -10,7 +10,7 @@
 #import "GameScene.h"
 #import "LandingPageView.h"
 #import "ShapeContainer.h"
-
+#import "BaseCollidableObject.h"
 
 @interface ShopPageView ()
 
@@ -63,8 +63,8 @@
     [self.arrObjects addObject:weakshopLbl];
     
     SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Ball"];
-    node.xScale = 0.1;
-    node.yScale = 0.1;
+    node.xScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
+    node.yScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
     node.color = [SKColor blackColor];
     node.colorBlendFactor = 0.4;
     
@@ -74,8 +74,8 @@
     //Second container
     
     SKSpriteNode *node2 = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Ball"];
-    node2.xScale = 0.1;
-    node2.yScale = 0.1;
+    node2.xScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
+    node2.yScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
     node2.color = [SKColor blackColor];
     node2.colorBlendFactor = 0.4;
     
@@ -85,8 +85,8 @@
     //Third container
     
     SKSpriteNode *node3 = [SKSpriteNode spriteNodeWithImageNamed:@"Default-Ball"];
-    node3.xScale = 0.1;
-    node3.yScale = 0.1;
+    node3.xScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
+    node3.yScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
     node3.color = [SKColor blackColor];
     node3.colorBlendFactor = 0.4;
     

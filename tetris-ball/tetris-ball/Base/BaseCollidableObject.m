@@ -47,8 +47,8 @@
 
 - (void) initializePhysicsBody
 {
-    self.xScale = 0.08;
-    self.yScale = 0.08;
+    self.xScale = SCALE_SIZE(0.08, self.parent.frame.size.height);
+    self.yScale = SCALE_SIZE(0.08, self.parent.frame.size.height);
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
     self.physicsBody.dynamic = NO;
     self.physicsBody.collisionBitMask = 0;
