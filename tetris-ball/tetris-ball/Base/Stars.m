@@ -37,8 +37,8 @@
 
 - (void) initialize
 {
-    self.xScale = 0.8;
-    self.yScale = 0.8;
+    self.xScale = SCALE_SIZE(0.8, self.parent.frame.size.height);
+    self.yScale = SCALE_SIZE(0.8, self.parent.frame.size.height);
     
     self.physicsBody.categoryBitMask = STAR_MASK;
     self.physicsBody.contactTestBitMask = BALL_MASK;

@@ -56,6 +56,9 @@
     self.physicsBody.categoryBitMask = PLATFORM_MASK;
     self.physicsBody.contactTestBitMask = BALL_MASK;
     self.physicsBody.usesPreciseCollisionDetection = YES;
+    
+    self.xScale = SCALE_SIZE(1, self.parent.frame.size.height);
+    self.yScale = SCALE_SIZE(1, self.parent.frame.size.height);
 }
 
 

@@ -77,22 +77,22 @@
     
     self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
     self.score = 0;
-    self.scoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"%ld",(long)self.score];
     self.scoreLabel.fontSize = 60;
     self.scoreLabel.position = CGPointMake(CGRectGetMidX(parent.frame) * 0.5,parent.size.height - self.scoreLabel.frame.size.height - 30);
     self.scoreLabel.fontColor = RED_COLOR;
     [self.parent addChild:self.scoreLabel];
     
     self.highScoreLabel = [SKLabelNode labelNodeWithFontNamed:FONT_TYPE];
-    self.highScoreLabel.text = [NSString stringWithFormat:@"%ld",[Session sharedInstance].getMaxScore];
+    self.highScoreLabel.text = [NSString stringWithFormat:@"%ld",(long)[Session sharedInstance].getMaxScore];
     self.highScoreLabel.fontSize = 60;
     self.highScoreLabel.position = CGPointMake(CGRectGetMidX(parent.frame) * 1.5,parent.size.height - self.highScoreLabel.frame.size.height - 30);
     self.highScoreLabel.fontColor = BLUE_COLOR;
     [self.parent addChild:self.highScoreLabel];
     
     SKSpriteNode* trophyNode = [SKSpriteNode spriteNodeWithImageNamed:@"Trophy"];
-    trophyNode.xScale = 0.1;
-    trophyNode.yScale = 0.1;
+    trophyNode.xScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
+    trophyNode.yScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
     trophyNode.position = CGPointMake(CGRectGetMidX(parent.frame),parent.size.height - trophyNode.frame.size.height / 2 - 10);
     
     [self.parent addChild:trophyNode];
@@ -109,15 +109,15 @@
         self.audioNode = [SKSpriteNode spriteNodeWithImageNamed:@"AudioOff"];
     }
     
-    self.audioNode.xScale = 0.1;
-    self.audioNode.yScale = 0.1;
+    self.audioNode.xScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
+    self.audioNode.yScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
     self.audioNode.position = CGPointMake(50.0, 50.0);
     
     [self.parent addChild:self.audioNode];
     
     self.infoNode = [SKSpriteNode spriteNodeWithImageNamed:@"InformationIcon"];
-    self.infoNode.xScale = 0.1;
-    self.infoNode.yScale = 0.1;
+    self.infoNode.xScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
+    self.infoNode.yScale = SCALE_SIZE(0.1, self.parent.frame.size.height);
     self.infoNode.position = CGPointMake(parent.frame.size.width - 50, 50.0);
     
     [self.parent addChild:self.infoNode];
@@ -155,7 +155,7 @@
     if (self.tapNode)
     {
         self.tapNode.texture = [SKTexture textureWithImageNamed:@"Phone"];
-        self.tapNode.xScale = 0.25;
+        self.tapNode.xScale = SCALE_SIZE(0.25, self.parent.frame.size.height);
         SKAction *waitAction = [SKAction waitForDuration:0.4];
         SKAction *fistAction = [SKAction rotateByAngle:- M_PI_2 / 2 duration:0.2];
         SKAction *secondAction = [SKAction rotateByAngle:M_PI_2 duration:0.4];
@@ -373,20 +373,21 @@
 
     if ([Session sharedInstance].getMaxScore < self.score) {
         [[Session sharedInstance] setMaxScore:self.score];
-        self.highScoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
+        self.highScoreLabel.text = [NSString stringWithFormat:@"%ld",(long)self.score];
     }
     self.score = 0;
     
     if (self.scoreLabel)
-        self.scoreLabel.text = [NSString stringWithFormat:@"%ld",self.score];
+        self.scoreLabel.text = [NSString stringWithFormat:@"%ld",(long)self.score];
     
     if (!self.tapNode)
     {
         SKSpriteNode *tapNode = [SKSpriteNode spriteNodeWithImageNamed:@"Tap"];
         self.tapNode = tapNode;
-        self.tapNode.xScale = 0.3;
-        self.tapNode.yScale = 0.3;
-        self.tapNode.position = CGPointMake(CGRectGetMidX(self.parent.frame),220);
+        self.tapNode.xScale = SCALE_SIZE(0.3, self.parent.frame.size.height);
+        self.tapNode.yScale = SCALE_SIZE(0.3, self.parent.frame.size.height);
+        self.tapNode.zPosition = 2;
+        self.tapNode.position = CGPointMake(CGRectGetMidX(self.parent.frame),CGRectGetMidY(self.parent.frame) * 0.65);
         
         [self.parent addChild:self.tapNode];
     }
