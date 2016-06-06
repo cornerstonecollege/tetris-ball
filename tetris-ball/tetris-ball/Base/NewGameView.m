@@ -157,9 +157,9 @@
         self.tapNode.texture = [SKTexture textureWithImageNamed:@"Phone"];
         self.tapNode.xScale = SCALE_SIZE(0.25, self.parent.frame.size.height);
         SKAction *waitAction = [SKAction waitForDuration:0.4];
-        SKAction *fistAction = [SKAction rotateByAngle:- M_PI_2 / 2 duration:0.2];
-        SKAction *secondAction = [SKAction rotateByAngle:M_PI_2 duration:0.4];
-        SKAction *thirdAction = [SKAction rotateByAngle:- M_PI_2 duration:0.4];
+        SKAction *fistAction = [SKAction rotateByAngle:- M_PI_2 / 4 duration:0.2];
+        SKAction *secondAction = [SKAction rotateByAngle:M_PI_2 / 2 duration:0.4];
+        SKAction *thirdAction = [SKAction rotateByAngle:- M_PI_2 / 2 duration:0.4];
         SKAction *sequenceAction = [SKAction sequence:@[waitAction, fistAction, secondAction, thirdAction]];
         [self.tapNode runAction: sequenceAction completion:^{
             [self.tapNode removeFromParent];
@@ -316,20 +316,7 @@
     {
         counter = 0;
         
-        SKColor *color = nil;
-        int colorN = arc4random_uniform(3);
-        switch(colorN)
-        {
-            case 0: color = RED_COLOR;
-                break;
-            case 1: color = BLUE_COLOR;
-                break;
-            case 2: color = GREEN_COLOR;
-                break;
-            default:
-                break;
-            
-        }
+        SKColor *color = [self randomColor];
         platform1 = [Platform platformDefaultWithParent:self.parent andColor:color];
         platform1.position = CGPointMake(self.parent.size.width,
                                          CGRectGetMidY(self.parent.frame));
@@ -338,7 +325,7 @@
         [platform1 runAction:movePlatform completion:^{
             [platform1 removeFromParent];
             if (!self.isGameOver) {
-                self.scoreLabel.text = [NSString stringWithFormat:@"%d",++self.score];
+                self.scoreLabel.text = [NSString stringWithFormat:@"%ld",(long)++self.score];
             }
         }];
         
@@ -362,12 +349,24 @@
     }
 }
 
+- (SKColor *) randomColor
+{
+    int colorN = arc4random_uniform(3);
+    switch(colorN)
+    {
+        case 0: return RED_COLOR;
+        case 1: return BLUE_COLOR;
+        case 2: return GREEN_COLOR;
+        default: return nil;
+    }
+}
+
 - (void) doGameOver
 {
     self.isGameOver = TRUE;
     [self.player removeFromParent];
     
-    self.player = [Ball ballDefaultWithParent:self.parent andColor:RED_COLOR];
+    self.player = [Ball ballDefaultWithParent:self.parent andColor:[self randomColor]];
     self.player.physicsBody.dynamic = NO;
     self.player.position = CGPointMake(CGRectGetMidX(self.parent.frame) + self.player.frame.size.width / 2,CGRectGetMidY(self.parent.frame) + 150);
 
@@ -396,14 +395,16 @@
 
 - (void) initializeGyroscope
 {
-    self.motionManager = [[CMMotionManager alloc] init];
-    self.motionManager.accelerometerUpdateInterval = 0.2;
-    self.motionManager.gyroUpdateInterval = 0.2;
-    [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
+    if (!self.motionManager)
+    {
+        self.motionManager = [[CMMotionManager alloc] init];
+        self.motionManager.accelerometerUpdateInterval = 0.2;
+        [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
                                              withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error)
-     {
-         [self outputAccelerationData:accelerometerData.acceleration];
-     }];
+         {
+             [self outputAccelerationData:accelerometerData.acceleration];
+         }];
+    }
 }
 
 -(void)outputAccelerationData:(CMAcceleration)acceleration

@@ -253,7 +253,7 @@
 				TargetAttributes = {
 					1C1D1DBC1CEF9AF4007F63CF = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = T77XYGL4LJ;
+						DevelopmentTeam = 8R6D662874;
 					};
 				};
 			};
@@ -434,7 +434,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "tetris-ball/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.tetris-ball";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornerstonecollege.tilty-ball";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -448,7 +448,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "tetris-ball/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideiadoluiz.tetris-ball";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornerstonecollege.tilty-ball";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
