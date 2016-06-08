@@ -21,13 +21,12 @@
 @property (nonatomic) CMMotionManager *motionManager;
 @property (nonatomic) BOOL isNotVertical;
 @property (nonatomic, weak) Ball *player;
-@property (nonatomic, weak) SKLabelNode *scoreLabel;
+@property (nonatomic) SKLabelNode *scoreLabel;
 @property (nonatomic) NSInteger score;
-@property (nonatomic, weak) SKLabelNode *highScoreLabel;
+@property (nonatomic) SKLabelNode *highScoreLabel;
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) SKSpriteNode *audioNode;
 @property (nonatomic, weak) SKSpriteNode *tapNode;
-@property (nonatomic, weak) SKSpriteNode *tiltNode;
 @property (nonatomic) SKSpriteNode *infoNode;
 @property (nonatomic) NSArray<SKNode *> *creditsNodeArr;
 

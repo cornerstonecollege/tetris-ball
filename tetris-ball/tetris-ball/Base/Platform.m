@@ -37,6 +37,7 @@
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
     CGRect rect = CGRectMake(0, 0, 40, 40);
     CGPathAddRoundedRect(pathToDraw, NULL, rect, 4, 4);
+    
     Platform *platformDefault = [[Platform alloc] initWithPath:pathToDraw lineWidth:10.0 colorLine:[SKColor clearColor] andParent:parent];
      platformDefault.fillColor = color;
     
@@ -47,6 +48,7 @@
 {
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
     CGRect rect = CGRectMake(10, 40, 20, 5);
+    
     CGPathAddRect(pathToDraw, NULL, rect);
     SKShapeNode *shapeNode = [SKShapeNode shapeNodeWithPath:pathToDraw];
     

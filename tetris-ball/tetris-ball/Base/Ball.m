@@ -37,6 +37,7 @@
 {
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
     CGPathAddArc(pathToDraw, NULL, 0,0, 15, 0, M_PI*2, YES);
+    
     Ball *playerDefault = [[Ball alloc] initWithPath:pathToDraw andParent:parent];
     playerDefault.fillColor = color;
     
@@ -47,6 +48,7 @@
 {
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
     CGPathAddArc(pathToDraw, NULL, 0,0, radius, 0, M_PI*2, YES);
+    
     Ball *playerDefault = [[Ball alloc] initWithPath:pathToDraw andParent:parent];
     playerDefault.fillColor = color;
     

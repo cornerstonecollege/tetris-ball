@@ -31,7 +31,7 @@
 {
     CGSize size = parent.size;
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
-    
+
     for (int y = 0; y < size.height; y += SPACE_LINE)
     {
         CGPathMoveToPoint(pathToDraw, NULL, 0.0, y);

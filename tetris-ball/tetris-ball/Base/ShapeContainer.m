@@ -15,6 +15,7 @@
     CGMutablePathRef pathToDraw = CGPathCreateMutable();
     CGRect rect = CGRectMake(0, 0, 120, 75);
     CGPathAddRoundedRect(pathToDraw, NULL, rect, 10, 10);
+    
     ShapeContainer *shapeDefault = [[ShapeContainer alloc] initWithPath:pathToDraw lineWidth:2.0 colorLine:[SKColor blackColor] andParent:parent];
     
     if (shapeDefault)
